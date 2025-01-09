@@ -1,18 +1,8 @@
-id,list_id,list_time,manufacture_date,brand,model,origin,type,seats,gearbox,fuel,color,mileage_v2,price,condition,id_list_id_list_time
-149078325,109132753,1693020012100,2023,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,0,,new,149078325_109132753_1693020012100
-146913084,107300282,1694577922666,2023,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,white,0,,new,146913084_107300282_1694577922666
-146913084,107300282,1695866502353,2023,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,white,0,,new,146913084_107300282_1695866502353
-146913084,107300282,1696131288381,2023,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,white,0,,new,146913084_107300282_1696131288381
-146913084,107300282,1696665170625,2023,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,white,0,,new,146913084_107300282_1696665170625
-142193083,103363081,1697428800618,2011,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,petrol,silver,110000,,used,142193083_103363081_1697428800618
-151062809,110836909,1697508696688,2022,Hyundai,Stargazer,Hàn Quốc,Minivan (MPV),7.0,AT,petrol,white,0,,new,151062809_110836909_1697508696688
-150402026,110267643,1697598569197,2023,Hyundai,Custin,Việt Nam,Minivan (MPV),7.0,AT,petrol,white,0,,new,150402026_110267643_1697598569197
-151141221,110902640,1697602741000,2023,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,0,,new,151141221_110902640_1697602741000
-151140755,110902757,1697644330717,2022,Hyundai,Stargazer,Nước khác,Minivan (MPV),7.0,AT,petrol,white,0,,new,151140755_110902757_1697644330717
-148355995,108519574,1697624025715,2022,Hyundai,Stargazer,Nước khác,Minivan (MPV),7.0,AT,petrol,black,0,,new,148355995_108519574_1697624025715
-150402026,110267643,1698041706084,2023,Hyundai,Custin,Việt Nam,Minivan (MPV),7.0,AT,petrol,white,0,,new,150402026_110267643_1698041706084
-148355995,108519574,1698142936982,2022,Hyundai,Stargazer,Nước khác,Minivan (MPV),7.0,AT,petrol,black,0,,new,148355995_108519574_1698142936982
-151062809,110836909,1697686549367,2022,Hyundai,Stargazer,Hàn Quốc,Minivan (MPV),7.0,AT,petrol,white,0,,new,151062809_110836909_1697686549367
-146913084,107300282,1698122188337,2023,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,white,0,,new,146913084_107300282_1698122188337
-151140755,110902757,1698159853612,2022,Hyundai,Stargazer,Nước khác,Minivan (MPV),7.0,AT,petrol,white,0,,new,151140755_110902757_1698159853612
-149395576,109401406,1692952626000,2023,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,0,,new,149395576_109401406_1692952626000
+manufacture_date,brand,model,origin,type,seats,gearbox,fuel,color,mileage_v2,price,condition
+2023,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,0,,new
+2023,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,white,0,,new
+2011,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,petrol,silver,110000,,used
+2022,Hyundai,Stargazer,Hàn Quốc,Minivan (MPV),7.0,AT,petrol,white,0,,new
+2023,Hyundai,Custin,Việt Nam,Minivan (MPV),7.0,AT,petrol,white,0,,new
+2022,Hyundai,Stargazer,Nước khác,Minivan (MPV),7.0,AT,petrol,white,0,,new
+2022,Hyundai,Stargazer,Nước khác,Minivan (MPV),7.0,AT,petrol,black,0,,new
