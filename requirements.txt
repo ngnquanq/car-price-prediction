@@ -10,6 +10,7 @@ numpy==1.26.4
 pandas==2.2.2
 flake8==7.1.1 # For veryfiyng the code quality 
 regex
+tabpfn # A new architecture that has potential to outperform xgboost
 loguru==0.7.3# For logging
 pytest==8.3.4 # For testing the code
 locust==2.32.5 # For load testing
