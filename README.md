@@ -68,15 +68,15 @@ If you dont have conda, use venv (built-in w/ Python)
 - `GET /`: Root endpoint to check if the API is running.
 - `POST /predict`: Endpoint to predict car prices. Expects a JSON payload with car features.
 
-## Example Request
+## Test
+In order to run test code:
 
-```json
-{
-    "make": "Toyota",
-    "model": "Corolla",
-    "year": 2020,
-    "mileage": 15000,
-    "condition": "Excellent"
-}
+```bash
+pytest test
 ```
+
+The objective of the test is to see whether the predicted values lay within the 5% range of the actual value
+
+
+
 
