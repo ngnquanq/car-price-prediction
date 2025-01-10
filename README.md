@@ -77,6 +77,7 @@ pytest test
 
 The objective of the test is to see whether the predicted values lay within the 5% range of the actual value
 
-
+## Link to report
+[Link to homework Report](https://docs.google.com/document/d/19Z7UBl4Te8HHzwaOXbRzGcpIlKpdOoEZ-TlovbhqSX4/edit?usp=sharing)
 
 
