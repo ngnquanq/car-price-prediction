@@ -5,6 +5,10 @@ import random
 import pandas as pd
 import pytest
 import random
+import joblib
+import catboost
+from api.constants import CAT_COLS, COLS_TO_DROP
+from api.preprocess import convert_data_dmatrix, drop_unncessary_columns, cast_to_category, encode_cat_cols
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -12,7 +16,14 @@ from api.main import PARAMS, MODEL_PATH
 
 @pytest.fixture()
 def create_model():
-    return xgb.Booster(params=PARAMS, model_file=f"{MODEL_PATH}/xgb_model.json")
+    model = catboost.CatBoostRegressor()
+    model.load_model(f"{MODEL_PATH}/catboost_model.cbm")
+    return model
+
+@pytest.fixture()
+def create_encoder():
+    encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
+    return encoder
 
 @pytest.fixture()
 def sample_inference_1():

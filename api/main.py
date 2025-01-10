@@ -35,7 +35,8 @@ app = FastAPI()
 # Load the encoder
 encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
 # load the model
-model = xgb.Booster(params=PARAMS, model_file=f"{MODEL_PATH}/xgb_model.json")
+model = catboost.CatBoostRegressor()
+model.load_model(f"{MODEL_PATH}/catboost_model.cbm")
 @app.get("/")
 def read_root():
     return {"Hello": "World"}

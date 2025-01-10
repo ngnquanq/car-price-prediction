@@ -1,3 +1,5 @@
+from calendar import c
+from json import encoder
 import os
 import pandas as pd
 import sys
@@ -21,19 +23,19 @@ client = TestClient(app)
 
 from fastapi.middleware.cors import CORSMiddleware
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Adjust allowed origins for your use case
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],  # Adjust allowed origins for your use case
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 
-def test_model_inference_1(create_model, sample_inference_1):
+def test_model_inference_1(create_model, create_encoder, sample_inference_1):
     """Test model inference using a fixture."""
     model = create_model  # Load the model from the fixture
-
+    encoder = create_encoder
     # Actual value for sample_inference_1
     actual_value = 1239000000.0
 
@@ -44,12 +46,12 @@ def test_model_inference_1(create_model, sample_inference_1):
     data_df = pd.DataFrame([sample_inference_1])
     data_df = preprocess.drop_unncessary_columns(data_df, constants.COLS_TO_DROP)
     data_df = preprocess.cast_to_category(data_df, constants.CAT_COLS)
-
+    data_df = preprocess.encode_cat_cols(data_df, encoder, constants.CAT_COLS)
     # Convert to DMatrix
-    dtest = preprocess.convert_data_dmatrix(df=data_df)
+   #dtest = preprocess.convert_data_dmatrix(df=data_df)
 
     # Make prediction
-    prediction = model.predict(dtest)
+    prediction = model.predict(data_df)
     predicted_value = float(prediction[0])
 
     # Calculate bounds
@@ -64,10 +66,10 @@ def test_model_inference_1(create_model, sample_inference_1):
     print(f"Test passed: Predicted value {predicted_value} is within 5% of the actual value {actual_value}.")
 
 
-def test_model_inference_2(create_model, sample_inference_2):
+def test_model_inference_2(create_model, create_encoder, sample_inference_2):
     """Test model inference using a fixture."""
     model = create_model  # Load the model from the fixture
-
+    encoder = create_encoder
     # Actual value for sample_inference_1
     actual_value = 494000000.0
 
@@ -78,12 +80,12 @@ def test_model_inference_2(create_model, sample_inference_2):
     data_df = pd.DataFrame([sample_inference_2])
     data_df = preprocess.drop_unncessary_columns(data_df, constants.COLS_TO_DROP)
     data_df = preprocess.cast_to_category(data_df, constants.CAT_COLS)
-
+    data_df = preprocess.encode_cat_cols(data_df, encoder, constants.CAT_COLS)
     # Convert to DMatrix
-    dtest = preprocess.convert_data_dmatrix(df=data_df)
+    #dtest = preprocess.convert_data_dmatrix(df=data_df)
 
     # Make prediction
-    prediction = model.predict(dtest)
+    prediction = model.predict(data_df)
     predicted_value = float(prediction[0])
 
     # Calculate bounds
@@ -97,10 +99,10 @@ def test_model_inference_2(create_model, sample_inference_2):
 
     print(f"Test passed: Predicted value {predicted_value} is within 5% of the actual value {actual_value}.")
 
-def test_model_inference_3(create_model, sample_inference_3):
+def test_model_inference_3(create_model, create_encoder, sample_inference_3):
     """Test model inference using a fixture."""
     model = create_model  # Load the model from the fixture
-
+    encoder = create_encoder
     # Actual value for sample_inference_1
     actual_value = 368000000.0
 
@@ -111,12 +113,10 @@ def test_model_inference_3(create_model, sample_inference_3):
     data_df = pd.DataFrame([sample_inference_3])
     data_df = preprocess.drop_unncessary_columns(data_df, constants.COLS_TO_DROP)
     data_df = preprocess.cast_to_category(data_df, constants.CAT_COLS)
-
-    # Convert to DMatrix
-    dtest = preprocess.convert_data_dmatrix(df=data_df)
+    data_df = preprocess.encode_cat_cols(data_df, encoder, constants.CAT_COLS)
 
     # Make prediction
-    prediction = model.predict(dtest)
+    prediction = model.predict(data_df)
     predicted_value = float(prediction[0])
 
     # Calculate bounds
