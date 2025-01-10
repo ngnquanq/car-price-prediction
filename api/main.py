@@ -1,36 +1,45 @@
+from json import encoder
 from urllib import response
+
+
+import catboost
+from fastapi.testclient import TestClient
 import joblib
+import pytest
 import pandas as pd 
+import xgboost as xgb
 from regex import R
 import requests
 from api.pydantic_models import CarPriceData
+import numpy as np
 from fastapi import FastAPI, HTTPException
 from loguru import logger
 import sys 
 import os 
-sys.path.append(os.path.dirname(os.path.dirname((os.path.abspath(__file__)))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from api import constants, preprocess
 
 # Setup some constants
 MODEL_PATH="models"
-EXTERNAL_API="https://localhost:8081/retrieve_data" #can connect to database or other external resources
+PARAMS = {
+    'objective': 'reg:squarederror', 
+    'max_depth': 20,
+    'eta': 0.5,
+    'enable_categorical': True
+    }
 
 # Initialize the FastAPI app
 app = FastAPI()
 
-# load the model
-catogrical_encoder=joblib.load(f"{MODEL_PATH}/label_encoders.joblib") # still thinking
-model=joblib.load(filename='models/model_xgb.joblib') # still thinking
 
+# Load the encoder
+encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
+# load the model
+model = xgb.Booster(params=PARAMS, model_file=f"{MODEL_PATH}/xgb_model.json")
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
-@app.post("/retrieve_data")
-def retrieve_data(id: int):
-    # Make call from external resources to retrieve data
-    logger.info(f"Retrieving data for id {id}")
-    return constants.SAMPLE_DATA
 
 @app.post("/predict")
 def predict(car_data: CarPriceData):
@@ -44,13 +53,14 @@ def predict(car_data: CarPriceData):
     try:
         # Dropping unwanted columns
         test_df = preprocess.drop_unncessary_columns(df=test_df, cols_to_drop=constants.COLS_TO_DROP)
-        print("pass drop")
         
-        # Convert categorical columns to category
+        # # Convert categorical columns to category
         test_df = preprocess.cast_to_category(df=test_df, cols_to_cast=constants.CAT_COLS)
         
-        # Convert df to DMatrix (assuming this is for XGBoost)
-        test_df = preprocess.convert_data_dmatrix(df=test_df)
+        # # Convert with the label encoder
+        test_df = preprocess.encode_cat_cols(df=test_df, label_encoder=encoder, cat_cols=constants.CAT_COLS)
+        
+        
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error during preprocessing: {str(e)}")
 
@@ -60,4 +70,32 @@ def predict(car_data: CarPriceData):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error during prediction: {str(e)}")
     
-    return {"prediction": float(y_pred[0])}
+    return float(y_pred[0])
+
+if __name__ == "__main__":
+    # The following code is for fast prototype
+    xgb_params = {
+    'objective': 'reg:squarederror', 
+    'max_depth': 20,
+    'eta': 0.5,
+    'enable_categorical': True
+    }   
+    #model = xgb.Booster(params=xgb_params, model_file=f"{MODEL_PATH}/xgb_model.json")
+    encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
+    model = catboost.CatBoostRegressor()
+    model.load_model(f"{MODEL_PATH}/catboost_model.cbm")
+    sample_data = constants.SAMPLE_DATA
+    data_df = pd.DataFrame(sample_data, index=[0])
+    data_df = data_df.drop(columns='price')
+    data_df = preprocess.drop_unncessary_columns(df=data_df, cols_to_drop=constants.COLS_TO_DROP)
+    data_df = preprocess.cast_to_category(df=data_df, cols_to_cast=constants.CAT_COLS)
+    data_df = preprocess.encode_cat_cols(df=data_df, label_encoder=encoder, cat_cols=constants.CAT_COLS)
+    #data_numpy = data_df.to_numpy()
+    # # Convert the sample input to DMatrix for prediction
+    #dtest_sample = xgb.DMatrix(data_df, enable_categorical=True, missing=np.NAN)
+
+    # Predict the price using the trained model
+    predicted_price = model.predict(data_df)
+
+    # Print the predicted price
+    print(f"Predicted price: {predicted_price[0]}")
