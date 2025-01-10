@@ -14,7 +14,7 @@ Also, my python version is 3.9. I use with conda.
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/car-price-prediction.git
+    git clone https://github.com/ngnquanq/car-price-prediction.git
     cd car-price-prediction
     ```
 
