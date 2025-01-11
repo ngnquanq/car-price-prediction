@@ -1,431 +1,370 @@
 manufacture_date,brand,model,origin,type,seats,gearbox,fuel,color,mileage_v2,condition
-2022,Kia,Carnival,Việt Nam,Minivan (MPV),7.0,AT,oil,black,13000,used
-2011,Toyota,Camry,Việt Nam,Sedan,5.0,AT,petrol,grey,330000,used
-2007,Mitsubishi,Grandis,Nhật Bản,SUV / Cross over,7.0,AT,petrol,black,100,used
-2019,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,white,50000,used
-2018,Hyundai,Grand i10,Việt Nam,Hatchback,5.0,AT,petrol,white,5000,used
-2001,Toyota,Corolla,Nhật Bản,Sedan,5.0,MT,petrol,grey,115000,used
-2021,Ford,Everest,Thái Lan,SUV / Cross over,7.0,AT,oil,red,48000,used
-2012,Chevrolet,Spark,Mỹ,Hatchback,5.0,AMT,petrol,white,130,used
-2021,Kia,Cerato,Việt Nam,Sedan,5.0,AT,petrol,grey,38000,used
-2022,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,12000,used
-2011,Ford,Fiesta,Mỹ,Sedan,4.0,AT,petrol,white,48000,used
-2013,Ford,Focus,Việt Nam,Hatchback,5.0,AT,petrol,brown,70000,used
-2023,Mitsubishi,Xpander,Nước khác,Minivan (MPV),7.0,AT,petrol,white,0,new
-2018,Toyota,Corolla Altis,Nhật Bản,Sedan,5.0,AT,petrol,black,50000,used
-2019,Toyota,Camry,Thái Lan,Sedan,5.0,AT,petrol,white,27000,used
-2018,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,white,75000,used
-2020,Suzuki,XL 7,Nước khác,SUV / Cross over,5.0,AT,petrol,brown,5500,used
-2009,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,blue,200000,used
-2023,Kia,Carnival,Việt Nam,SUV / Cross over,5.0,AT,oil,white,15000,used
-2019,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,white,0,new
-2023,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,grey,0,new
-2015,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,black,40000,used
-2015,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,green,140000,used
-2022,Kia,Carnival,Hàn Quốc,Minivan (MPV),7.0,AT,petrol,black,1,used
-2018,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,white,40000,used
-2016,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,red,8386,used
-2017,Chevrolet,Cruze,Mỹ,Sedan,5.0,AT,petrol,silver,45000,used
-2016,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,brown,86000,used
-2023,Ford,Territory,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,0,used
-2022,Hyundai,Grand i10,Hàn Quốc,Hatchback,5.0,AT,petrol,white,5000,used
-2023,Hyundai,Tucson,Việt Nam,SUV / Cross over,7.0,AT,petrol,grey,0,new
-2017,Kia,Cerato,Việt Nam,Sedan,5.0,AT,petrol,red,52000,used
-2022,Toyota,Camry,Thái Lan,Sedan,5.0,AT,petrol,red,27000,used
-2021,Mazda,6,Việt Nam,Sedan,5.0,AT,petrol,red,22500,used
-2017,Hyundai,Grand Starex,Hàn Quốc,Van,6.0,MT,oil,silver,10000,used
-2020,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,18000,used
-2021,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,white,73000,used
-2016,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,100,used
-2019,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,blue,40000,used
-2016,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,94000,used
-2012,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,86000,used
-2020,Toyota,Rush,Nước khác,SUV / Cross over,5.0,AT,petrol,white,67500,used
-2014,Toyota,Corolla Altis,Việt Nam,Sedan,5.0,AT,petrol,silver,107370,used
-2010,Kia,Cerato,Hàn Quốc,Sedan,5.0,AT,petrol,black,120000,used
-2008,Honda,Civic,Việt Nam,Sedan,4.0,MT,petrol,silver,400000,used
-2021,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,brown,24000,used
-2004,Mercedes Benz,C Class,Đức,Sedan,5.0,AT,petrol,black,150000,used
-2021,Kia,Sorento,Hàn Quốc,SUV / Cross over,6.0,AT,petrol,others,25800,used
-2011,Kia,Carens,Việt Nam,Minivan (MPV),7.0,AT,petrol,gold,142520,used
-2022,Kia,K5,Việt Nam,Sedan,5.0,AT,petrol,grey,7000,used
-2017,Mitsubishi,Triton,Thái Lan,Pick-up (bán tải),5.0,AT,oil,white,224000,used
-2017,Kia,Sorento,Việt Nam,SUV / Cross over,7.0,AT,oil,black,87000,used
-2009,Kia,Cerato,Nước khác,Sedan,5.0,MT,petrol,silver,100,used
-2022,Honda,Accord,Thái Lan,Sedan,5.0,AT,petrol,white,0,new
-2016,Honda,CR V,Việt Nam,SUV / Cross over,5.0,AT,petrol,grey,85000,used
-2022,Ford,Ranger,Việt Nam,Pick-up (bán tải),5.0,MT,oil,white,9000,used
-2022,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,red,4500,used
-2009,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,silver,9000,used
-2022,Toyota,Innova,Việt Nam,SUV / Cross over,7.0,AT,petrol,white,47000,used
-2017,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,gold,92,used
-2022,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,red,15400,used
-2022,Kia,Seltos,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,white,10000,used
-2023,Mitsubishi,Attrage,Thái Lan,Sedan,5.0,AT,petrol,grey,0,new
-2023,Toyota,Avanza,Việt Nam,Minivan (MPV),7.0,AT,petrol,white,50,new
-2022,Mazda,CX 8,Nhật Bản,SUV / Cross over,7.0,AT,petrol,white,0,new
-2018,Toyota,Camry,Việt Nam,Sedan,5.0,AT,petrol,black,100000,used
-2023,Ford,Everest,Thái Lan,SUV / Cross over,7.0,AT,oil,white,1,used
-2019,Chevrolet,Trailblazer,Thái Lan,SUV / Cross over,5.0,AT,oil,black,79000,used
-2020,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,100000,used
-2019,Mercedes Benz,GLC,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,75000,used
-2022,Kia,Dòng khác,Việt Nam,Sedan,5.0,AT,petrol,white,0,new
-2023,Toyota,Veloz,Nhật Bản,SUV / Cross over,7.0,AT,petrol,red,0,new
-2015,Hyundai,Avante,Việt Nam,Sedan,5.0,AT,petrol,brown,105,used
-2018,Mazda,6,Việt Nam,Sedan,5.0,AT,petrol,white,9000,used
-2016,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,silver,80000,used
-1990,Toyota,Camry,Nhật Bản,Sedan,5.0,MT,petrol,blue,100000,used
-2019,Mitsubishi,Xpander,Nước khác,Minivan (MPV),5.0,AT,petrol,white,49000,used
-2020,Toyota,Vios,Nhật Bản,Sedan,8.0,MT,petrol,white,49999,used
-2012,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,silver,12000,used
-2016,Ford,Transit,Việt Nam,Kiểu dáng khác,16.0,MT,oil,silver,111,used
-2023,Ford,Ranger,Việt Nam,SUV / Cross over,5.0,AT,petrol,others,0,new
-2004,Daewoo,Lanos,Hàn Quốc,Kiểu dáng khác,4.0,MT,petrol,silver,90000,used
-2022,Mercedes Benz,E Class,Việt Nam,Sedan,5.0,AT,petrol,white,3900,used
-1988,Toyota,Camry,Nhật Bản,Sedan,5.0,AT,petrol,white,25000,used
-2022,Vinfast,VFe34,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,11000,used
-2009,Mitsubishi,Lancer,Đài Loan,Sedan,5.0,AT,petrol,red,1,used
-1996,Suzuki,Balenno,Nhật Bản,Kiểu dáng khác,4.0,MT,petrol,red,118863,used
-2016,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,160000,used
-1990,Toyota,Camry,Mỹ,Sedan,5.0,AT,petrol,blue,123,used
-2003,Mazda,6,Việt Nam,Sedan,5.0,MT,petrol,black,190000,used
-2007,Toyota,Corolla,Mỹ,Sedan,5.0,AT,petrol,black,120000,used
-2004,Kia,CD5,Việt Nam,Hatchback,5.0,MT,petrol,silver,100000,used
-2017,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,72000,used
-2013,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,silver,68000,used
-2009,Ford,Everest,Việt Nam,SUV / Cross over,7.0,MT,oil,gold,110000,used
-2021,Kia,Seltos,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,26000,used
-2020,Mitsubishi,Xpander,Nước khác,Minivan (MPV),7.0,AT,petrol,white,60000,used
-2018,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,white,52000,used
-2017,Chevrolet,Aveo,Việt Nam,Sedan,5.0,AT,petrol,white,48000,used
-2021,Honda,Brio,Nước khác,Hatchback,5.0,AT,petrol,red,9000,used
-2023,Toyota,Wigo,Nước khác,Hatchback,5.0,AT,petrol,white,50,new
-2021,Kia,Seltos,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,290000,used
-2014,Mercedes Benz,GLK Class,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,120000,used
-2023,Toyota,Wigo,Nước khác,Hatchback,5.0,MT,petrol,white,0,new
-2018,Toyota,Innova,Việt Nam,SUV / Cross over,8.0,MT,petrol,silver,65000,used
-1998,Daewoo,Nubira,Hàn Quốc,Sedan,5.0,AT,petrol,blue,987789,used
-2020,Hyundai,Grand i10,Việt Nam,Sedan,5.0,MT,petrol,white,69000,used
-2022,Mercedes Benz,GLC Class,Việt Nam,SUV / Cross over,5.0,AT,petrol,blue,8000,used
-2017,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,white,50000,used
-2022,Hyundai,Stargazer,Nước khác,Minivan (MPV),7.0,AT,petrol,red,0,new
-2023,Honda,CR V,Việt Nam,SUV / Cross over,7.0,AT,petrol,blue,0,new
-2017,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,gold,120000,used
-2023,Toyota,Avanza,Việt Nam,Minivan (MPV),7.0,MT,petrol,others,0,new
-2023,Mitsubishi,Attrage,Thái Lan,Sedan,5.0,AT,petrol,red,0,new
-2021,Mitsubishi,Xpander,Việt Nam,Minivan (MPV),7.0,AT,petrol,white,21700,used
-2021,Hyundai,Elantra,Hàn Quốc,Sedan,5.0,AT,petrol,white,20000,used
-2014,Suzuki,Grand vitara,Nhật Bản,SUV / Cross over,5.0,AT,petrol,silver,90000,used
-2009,Mitsubishi,Grandis,Việt Nam,Minivan (MPV),5.0,AT,petrol,gold,144000,used
-2020,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,brown,40000,used
-2019,Mitsubishi,Xpander,Nước khác,Minivan (MPV),5.0,AT,petrol,white,80000,used
-2023,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,white,0,new
-2015,Toyota,Fortuner,Nước khác,SUV / Cross over,7.0,AT,petrol,grey,71423,used
-2019,Toyota,Innova,Nước khác,Minivan (MPV),8.0,MT,petrol,white,83000,used
-2018,Toyota,Vios,Nhật Bản,Sedan,5.0,MT,petrol,gold,186000,used
-2022,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,30000,used
-2023,Ford,Everest,Mỹ,SUV / Cross over,7.0,AT,oil,red,0,new
-2022,Mercedes Benz,GLC,Việt Nam,SUV / Cross over,5.0,AT,petrol,blue,4000,used
-2016,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,gold,68000,used
-2018,Hyundai,Grand i10,Việt Nam,Sedan,5.0,MT,petrol,white,0,used
-2005,Daewoo,Matiz,Hàn Quốc,Hatchback,5.0,MT,petrol,silver,250000,used
-2010,Toyota,Camry,Việt Nam,Sedan,5.0,AT,petrol,black,106000,used
-2022,Kia,Morning,Hàn Quốc,Hatchback,5.0,AT,petrol,red,10000,used
-2022,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,22000,used
-2021,Vinfast,Fadil,Việt Nam,Hatchback,5.0,AT,petrol,red,18000,used
-2019,Toyota,Wigo,Việt Nam,Hatchback,5.0,AT,petrol,white,72000,used
-2019,Hyundai,Grand i10,Việt Nam,Hatchback,5.0,AT,petrol,red,60000,used
-2019,Chevrolet,Cruze,Việt Nam,Sedan,5.0,MT,petrol,white,10654,used
-2022,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,black,20000,used
-1987,Honda,Accord,Nhật Bản,Sedan,5.0,MT,petrol,grey,100000,used
-2021,Mitsubishi,Xpander,Việt Nam,Minivan (MPV),7.0,MT,petrol,white,80362,used
-2019,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,grey,90000,used
-2018,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,white,57000,used
-2019,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,23145,used
-2003,Ford,Mondeo,Việt Nam,Sedan,5.0,AT,petrol,black,57000,used
-2022,Vinfast,Lux SA2.0,Việt Nam,SUV / Cross over,7.0,AT,petrol,black,20000,used
-2017,Ford,Fiesta,Việt Nam,Sedan,5.0,AT,petrol,white,75000,used
-2022,Vinfast,VFe34,Việt Nam,Hatchback,5.0,AT,petrol,blue,10000,used
-2020,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,red,20000,used
-2010,Toyota,Camry,Việt Nam,Sedan,5.0,AT,petrol,black,12,used
-2022,Toyota,Camry,Thái Lan,Sedan,5.0,AT,petrol,red,26000,used
-2008,Chevrolet,Captiva,Mỹ,SUV / Cross over,7.0,MT,petrol,gold,167000,used
-2022,Kia,Sorento,Việt Nam,SUV / Cross over,7.0,AT,oil,blue,0,new
-2022,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,white,840,used
-2012,Toyota,Sienna,Nước khác,Minivan (MPV),7.0,AT,petrol,others,65000,used
-2017,Hyundai,Dòng khác,Việt Nam,Kiểu dáng khác,2.0,MT,oil,blue,60000,used
-2020,Honda,Brio,Thái Lan,Hatchback,5.0,AT,petrol,silver,16000,used
-2022,Toyota,Corolla Cross,Thái Lan,SUV / Cross over,5.0,AT,petrol,black,1,new
-2022,Honda,Dòng khác,Việt Nam,Hatchback,5.0,AT,petrol,white,200000,used
-2017,Mazda,3,Việt Nam,Sedan,5.0,AT,petrol,red,69000,used
-2020,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,red,56000,used
-2016,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,MT,oil,silver,98000,used
-2018,Toyota,Hiace,Nhật Bản,Kiểu dáng khác,16.0,MT,oil,silver,56000,used
-2021,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,55000,used
-2021,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,white,22000,used
-2019,Hyundai,Accent,Nước khác,Sedan,5.0,AT,petrol,others,56000,used
-2016,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,146000,used
-2020,Mercedes Benz,S Class,Đức,Sedan,5.0,AT,petrol,white,30000,used
-2023,Kia,Carnival,Việt Nam,Minivan (MPV),8.0,AT,oil,red,0,new
-2021,Mitsubishi,Xpander,Việt Nam,Minivan (MPV),7.0,AT,petrol,red,41000,used
-2016,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,orange,108000,used
-2019,Mazda,2,Thái Lan,Sedan,5.0,AT,petrol,white,50000,used
-2019,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,blue,69000,used
-2016,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,petrol,silver,66000,used
-2020,Mitsubishi,Xpander,Thái Lan,SUV / Cross over,7.0,MT,petrol,white,90,used
-2021,Mitsubishi,Xpander,Nước khác,Minivan (MPV),7.0,AT,petrol,black,22000,used
-2015,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,black,82000,used
-2017,Kia,Sedona,Việt Nam,Minivan (MPV),7.0,AT,oil,white,140000,used
-1988,Toyota,Camry,Nhật Bản,Sedan,4.0,MT,petrol,silver,999999,used
-2019,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,black,70000,used
-2021,Toyota,Camry,Thái Lan,Sedan,5.0,AT,petrol,white,50000,used
-2023,Hyundai,Santa Fe,Hàn Quốc,SUV / Cross over,8.0,AT,hybrid,white,0,new
-2018,Kia,Sorento,Việt Nam,SUV / Cross over,7.0,AT,petrol,white,68789,used
-2016,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,gold,41000,used
-2023,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,white,50,used
-2023,Ford,Transit,Mỹ,Van,16.0,MT,oil,others,0,new
-2013,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,petrol,white,150000,used
-2020,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,gold,88000,used
-2015,Hyundai,Elantra,Hàn Quốc,Sedan,5.0,AT,petrol,white,45000,used
-2022,Toyota,Corolla Cross,Nhật Bản,SUV / Cross over,5.0,AT,petrol,red,14000,used
-2006,Honda,Civic,Việt Nam,Sedan,4.0,AT,petrol,black,130000,used
-2021,Ford,EcoSport,Việt Nam,SUV / Cross over,2.0,AT,petrol,white,30000,used
-2020,Mercedes Benz,GLC,Nhật Bản,SUV / Cross over,5.0,AT,petrol,black,27000,used
-2014,Kia,Cerato,Hàn Quốc,Hatchback,5.0,AT,petrol,white,60000,used
-2020,Ford,EcoSport,Thái Lan,SUV / Cross over,4.0,AT,petrol,white,67999,used
-2022,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,blue,9000,used
-2020,Kia,Seltos,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,34000,used
-2021,Hyundai,Tucson,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,6,used
-2022,Toyota,Veloz,Việt Nam,Minivan (MPV),9.0,AT,petrol,white,33000,used
-2018,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,white,70000,used
-2020,Hyundai,Tucson,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,35000,used
-2022,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,30000,used
-2018,Mazda,BT 50,Thái Lan,Pick-up (bán tải),5.0,AT,oil,white,62000,used
-2020,Honda,Brio,Nhật Bản,Hatchback,5.0,AT,petrol,orange,36000,used
-2008,Chevrolet,Chevyvan,Đức,SUV / Cross over,7.0,MT,petrol,silver,118671,used
-2022,Hyundai,Grand i10,Việt Nam,Hatchback,5.0,AT,petrol,red,11000,used
-2019,Mazda,6,Việt Nam,Sedan,5.0,AT,petrol,blue,68000,used
-2013,Ford,Ranger,Nhật Bản,Pick-up (bán tải),5.0,AT,oil,silver,120000,used
-2019,Hyundai,Elantra,Việt Nam,Sedan,5.0,AT,petrol,white,40000,used
-2005,Hyundai,Trajet,Hàn Quốc,SUV / Cross over,9.0,AT,oil,silver,170000,used
-2020,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,orange,51000,used
-2023,Honda,Civic,Thái Lan,Sedan,5.0,AT,petrol,red,0,new
-2018,Mazda,2,Thái Lan,Sedan,5.0,AT,petrol,white,13000,used
-2011,Kia,Carens,Việt Nam,SUV / Cross over,7.0,AT,petrol,others,89998,used
-2018,Honda,CR V,Thái Lan,SUV / Cross over,7.0,AT,petrol,others,90000,used
-2020,Mazda,6,Việt Nam,Sedan,5.0,AT,petrol,red,400000,used
-2018,Hyundai,Tucson,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,black,73000,used
-2017,Mercedes Benz,S Class,Việt Nam,Sedan,5.0,AT,petrol,black,27000,used
-2019,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,MT,oil,brown,76000,used
-2022,Hyundai,Tucson,Việt Nam,SUV / Cross over,7.0,AT,petrol,white,7200,used
-2015,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,gold,49000,used
-2023,Toyota,Hilux,Thái Lan,Pick-up (bán tải),5.0,AT,oil,white,0,new
-2017,Ford,Transit,Việt Nam,Van,7.0,MT,oil,white,200,used
-2007,Ford,Transit,Mỹ,Kiểu dáng khác,10.0,AT,petrol,white,70000,used
-2022,Kia,Rondo,Việt Nam,SUV / Cross over,7.0,MT,petrol,white,33000,used
-2022,Mitsubishi,Xpander,Ấn Độ,Minivan (MPV),8.0,AT,petrol,black,37000,used
-2018,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,blue,42000,used
-2019,Ford,Tourneo,Việt Nam,Minivan (MPV),7.0,AT,petrol,white,72000,used
-2022,Suzuki,Ertiga,Nước khác,Minivan (MPV),7.0,MT,hybrid,black,22000,used
-2005,Toyota,Zace,Việt Nam,Minivan (MPV),8.0,MT,petrol,blue,115000,used
-2009,Daewoo,Gentra,Việt Nam,Sedan,5.0,MT,petrol,black,15000,used
-2014,Ford,Focus,Việt Nam,Sedan,5.0,AT,petrol,white,45000,used
-2009,Hyundai,Getz,Hàn Quốc,Hatchback,5.0,AT,petrol,red,100000,used
-2007,Toyota,Corolla Altis,Việt Nam,Sedan,5.0,MT,petrol,brown,182000,used
-2017,Mercedes Benz,GLC,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,59000,used
-2015,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,gold,123456,used
-2022,Mitsubishi,Xpander,Nước khác,Minivan (MPV),7.0,AT,petrol,white,6999,used
-2016,Mazda,6,Việt Nam,Sedan,5.0,AT,petrol,silver,65,used
-2021,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,white,31000,used
-2020,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,black,81234,used
-2008,Daewoo,Matiz,Việt Nam,Hatchback,5.0,MT,petrol,green,140000,used
-2016,Hyundai,Grand i10,Ấn Độ,Hatchback,5.0,MT,petrol,silver,125078,used
-2012,Kia,Morning,Hàn Quốc,Hatchback,2.0,MT,petrol,white,120689,used
-2021,Kia,Carnival,Hàn Quốc,Minivan (MPV),7.0,AT,oil,blue,0,used
-2020,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,white,35000,used
-2017,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,green,56000,used
-2021,Hyundai,Tucson,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,39000,used
-2016,Mazda,2,Việt Nam,Hatchback,5.0,AT,petrol,blue,72000,used
-2019,Hyundai,Kona,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,white,60000,used
-2021,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,black,16000,used
-2022,Ford,Ranger,Việt Nam,Pick-up (bán tải),5.0,AT,oil,black,34000,used
-2011,Chevrolet,Spark,Hàn Quốc,Hatchback,5.0,AT,petrol,white,130000,used
-2012,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,petrol,white,150000,used
-2019,Ford,Transit,Việt Nam,Van,7.0,MT,oil,blue,63000,used
-2011,Chevrolet,Spark,Việt Nam,Hatchback,2.0,MT,petrol,gold,76868,used
-2016,Ford,Transit,Việt Nam,Minivan (MPV),16.0,MT,oil,silver,180000,used
-2007,Hyundai,Click,Hàn Quốc,Hatchback,5.0,AT,petrol,green,190000,used
-2022,Mitsubishi,Xpander,Nước khác,Minivan (MPV),9.0,AT,petrol,white,26000,used
-2020,Mitsubishi,Xpander,Nước khác,Minivan (MPV),7.0,MT,petrol,brown,45000,used
-2017,Chevrolet,Colorado,Thái Lan,Pick-up (bán tải),5.0,AT,oil,black,90000,used
-2019,Mazda,CX 8,Việt Nam,SUV / Cross over,7.0,AT,petrol,white,38000,used
-2016,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,petrol,black,135000,used
-2012,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,white,120000,used
-2022,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,15500,used
-2018,Ford,EcoSport,Việt Nam,SUV / Cross over,5.0,AT,petrol,blue,58000,used
-2022,Hyundai,Tucson,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,white,14000,used
-2019,Toyota,Fortuner,Nước khác,SUV / Cross over,7.0,AT,petrol,white,49400,used
-2019,Toyota,Corolla Altis,Nhật Bản,Sedan,5.0,AT,petrol,black,48000,used
-2023,Kia,Morning,Hàn Quốc,Hatchback,5.0,AT,petrol,others,0,new
-2019,Toyota,Fortuner,Nước khác,SUV / Cross over,7.0,AT,oil,brown,28000,used
-2019,Toyota,Wigo,Thái Lan,Hatchback,5.0,AT,petrol,white,27000,used
-2017,Toyota,Fortuner,Nước khác,SUV / Cross over,7.0,MT,oil,black,108000,used
-2011,Hyundai,Tucson,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,red,174560,used
-2022,Kia,K3,Hàn Quốc,Sedan,2.0,AT,petrol,blue,0,new
-2005,Suzuki,Dòng khác,Việt Nam,Kiểu dáng khác,2.0,MT,petrol,white,10000,used
-2009,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,black,9000,used
-2023,Toyota,Land Cruiser Prado,Thái Lan,SUV / Cross over,7.0,AT,petrol,white,2800,used
-2002,Mitsubishi,Lancer,Việt Nam,Sedan,5.0,MT,petrol,grey,156870,used
-2008,Kia,Forte,Hàn Quốc,Sedan,5.0,AT,petrol,white,140000,used
-2017,Mazda,3,Việt Nam,Sedan,5.0,AT,petrol,white,50000,used
-2008,Ford,Transit,Việt Nam,SUV / Cross over,16.0,MT,oil,silver,95000,used
-2014,Ford,EcoSport,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,100000,used
-2022,Ford,Everest,Thái Lan,SUV / Cross over,7.0,AT,oil,brown,12000,used
-2017,Toyota,Fortuner,Nước khác,SUV / Cross over,7.0,MT,oil,brown,173000,used
-2022,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,white,8700,used
-2022,Hyundai,Grand i10,Việt Nam,Hatchback,5.0,AT,petrol,red,18000,used
-2016,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,62000,used
-2005,Suzuki,Vitara,Việt Nam,SUV / Cross over,5.0,MT,petrol,green,184845,used
-2021,Mazda,2,Thái Lan,Hatchback,5.0,AT,petrol,red,23000,used
-2003,Mercedes Benz,S Class,Đức,Sedan,5.0,AT,petrol,black,346798,used
-2014,Ford,Ranger,Việt Nam,Pick-up (bán tải),5.0,MT,oil,silver,98000,used
-2015,Mazda,BT 50,Thái Lan,Pick-up (bán tải),5.0,MT,oil,silver,100000,used
-2020,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,oil,white,130000,used
-2022,Hyundai,Tucson,Việt Nam,SUV / Cross over,5.0,AT,oil,white,18369,used
-2020,Toyota,Camry,Thái Lan,Sedan,5.0,AT,petrol,red,33900,used
-2016,Mazda,3,Thái Lan,Sedan,5.0,AT,petrol,blue,28000,used
+2017,Toyota,Corolla Altis,Việt Nam,Sedan,5.0,AT,petrol,black,69490,used
+2014,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,petrol,black,93000,used
+2015,Kia,K3,Việt Nam,Sedan,5.0,AT,petrol,black,97000,used
+2009,Suzuki,Alto,Ấn Độ,Hatchback,5.0,AMT,petrol,white,60000,used
+2005,Mitsubishi,Pajero,Việt Nam,SUV / Cross over,7.0,MT,petrol,blue,200000,used
+2020,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,petrol,white,22000,used
+2017,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,blue,22000,used
+2021,Mitsubishi,Triton,Thái Lan,Sedan,4.0,AT,oil,white,20000,used
+2022,Hyundai,Accent,Việt Nam,Sedan,5.0,MT,petrol,black,0,new
+2019,Mitsubishi,Xpander,Nước khác,Minivan (MPV),5.0,MT,petrol,black,56000,used
+2016,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,orange,97000,used
+2017,Toyota,Fortuner,Nhật Bản,SUV / Cross over,7.0,MT,oil,silver,143000,used
+2016,Mazda,BT 50,Thái Lan,Pick-up (bán tải),5.0,AT,oil,blue,130000,used
+2010,Toyota,Venza,Nước khác,SUV / Cross over,5.0,AT,petrol,others,60000,used
+2008,Chevrolet,Captiva,Mỹ,SUV / Cross over,7.0,MT,petrol,black,78000,used
+2021,Hyundai,Kona,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,3100,used
+2022,Hyundai,Creta,Nước khác,SUV / Cross over,2.0,AT,petrol,white,16000,used
+2022,Mitsubishi,Attrage,Thái Lan,Sedan,2.0,AT,petrol,grey,28500,used
+2020,Suzuki,Ertiga,Nước khác,Minivan (MPV),7.0,AT,petrol,black,76000,used
+2004,Mazda,3,Việt Nam,Sedan,5.0,AT,petrol,silver,160000,used
+2021,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,27000,used
+2019,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,blue,40000,used
+2018,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,130000,used
+2019,Mazda,3,Nhật Bản,Sedan,5.0,AT,petrol,white,39000,used
+2013,Mazda,2,Việt Nam,Hatchback,5.0,AT,petrol,white,89000,used
+2017,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,gold,81000,used
+2020,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,45000,used
+2018,Suzuki,Swift,Thái Lan,Hatchback,5.0,AT,petrol,white,34000,used
+2004,Daewoo,Lacetti,Hàn Quốc,Sedan,5.0,MT,petrol,black,295000,used
+2009,Kia,Morning,Hàn Quốc,Hatchback,5.0,AT,petrol,white,60000,used
+2022,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,white,22000,used
+2021,Ford,Ranger,Việt Nam,Pick-up (bán tải),5.0,AT,oil,black,27000,used
+2009,Kia,Cerato,Hàn Quốc,Coupe (2 cửa),5.0,AT,petrol,black,146000,used
+2015,Hyundai,Grand i10,Ấn Độ,Hatchback,5.0,MT,petrol,silver,68000,used
+2008,Chevrolet,Captiva,Việt Nam,Kiểu dáng khác,7.0,MT,petrol,black,100000,used
+2022,Kia,Sportage,Việt Nam,SUV / Cross over,5.0,AT,petrol,green,9500,used
+2010,Toyota,Corolla Altis,Việt Nam,Sedan,5.0,AT,petrol,black,120000,used
+2010,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,black,130238,used
+2021,Suzuki,Dòng khác,Việt Nam,Van,2.0,MT,petrol,white,31000,used
+2008,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,silver,12345,used
 2018,Kia,Sorento,Việt Nam,SUV / Cross over,7.0,AT,oil,black,71000,used
-2018,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,black,42000,used
-2018,Kia,Sedona,Việt Nam,Minivan (MPV),7.0,AT,oil,white,40000,used
-2019,Vinfast,1083,Việt Nam,Sedan,5.0,AT,petrol,red,39000,used
-2017,Mercedes Benz,V Class,Nước khác,Minivan (MPV),8.0,AT,petrol,grey,30000,used
-2016,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,white,97000,used
-2019,Mitsubishi,Attrage,Thái Lan,Sedan,5.0,MT,petrol,white,68775,used
-2015,Ford,Everest,Nước khác,SUV / Cross over,7.0,AT,oil,silver,81000,used
-2022,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,grey,3000,used
-2020,Honda,CR V,Việt Nam,SUV / Cross over,7.0,AT,petrol,pink,48000,used
-2016,Ford,Fiesta,Mỹ,Hatchback,5.0,AT,petrol,white,80000,used
-2011,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,173000,used
-2017,Mazda,MX 6,Nước khác,Sedan,5.0,AT,petrol,white,53197,used
-2020,Mazda,CX 8,Việt Nam,SUV / Cross over,7.0,AT,petrol,blue,43000,used
-2020,Mercedes Benz,S Class,Đức,Sedan,5.0,AT,petrol,black,33333,used
-2009,Hyundai,Getz,Hàn Quốc,Sedan,5.0,MT,petrol,silver,150,used
-2016,Toyota,Fortuner,Việt Nam,Minivan (MPV),7.0,MT,oil,silver,72000,used
-2022,Toyota,Fortuner,Việt Nam,SUV / Cross over,9.0,AT,oil,brown,10000,used
-2023,Ford,Everest,Thái Lan,SUV / Cross over,7.0,AT,petrol,white,6000,used
-2019,Toyota,Fortuner,Nhật Bản,SUV / Cross over,7.0,MT,oil,grey,64000,used
-2020,Hyundai,Kona,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,42000,used
-2022,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,white,60000,used
-2019,Hyundai,Accent,Việt Nam,Sedan,5.0,MT,petrol,white,76000,used
-2017,Hyundai,Grand i10,Ấn Độ,Hatchback,5.0,AT,petrol,white,47000,used
-2005,Mazda,6,Nhật Bản,Sedan,4.0,AT,petrol,black,120000,used
-2019,Toyota,Land Cruiser Prado,Nhật Bản,SUV / Cross over,7.0,AT,petrol,grey,61000,used
-2023,Toyota,Veloz Cross,Việt Nam,Kiểu dáng khác,7.0,AT,petrol,white,0,new
-2019,Mitsubishi,Triton,Thái Lan,Pick-up (bán tải),5.0,AT,oil,white,50000,used
-2021,Mercedes Benz,GLE Class,Đức,SUV / Cross over,7.0,AT,petrol,white,10000,used
-2011,Toyota,Fortuner,Nhật Bản,SUV / Cross over,7.0,MT,oil,silver,90000,used
-2009,Hyundai,Getz,Hàn Quốc,Hatchback,5.0,MT,petrol,blue,10000,used
-2019,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,black,50000,used
-2013,Hyundai,Grand Starex,Hàn Quốc,Minivan (MPV),2.0,AT,oil,white,10000,used
-2014,Honda,CR V,Thái Lan,SUV / Cross over,5.0,AT,petrol,grey,94000,used
-2015,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,gold,108570,used
-2013,Toyota,Hilux,Nhật Bản,Pick-up (bán tải),5.0,MT,oil,silver,180000,used
-2009,Ford,Escape,Việt Nam,SUV / Cross over,5.0,AT,petrol,gold,110000,used
-2014,Toyota,Innova,Việt Nam,Minivan (MPV),7.0,MT,petrol,silver,240,used
-2017,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,blue,33000,used
-2007,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,182345,used
-2019,Kia,Optima,Hàn Quốc,Sedan,5.0,AT,petrol,white,40000,used
-2021,Mitsubishi,Xpander Cross,Nhật Bản,Minivan (MPV),7.0,AT,petrol,silver,61999,used
-2010,Kia,Carens,Việt Nam,SUV / Cross over,5.0,MT,petrol,grey,142800,used
-2023,Ford,Territory,Mỹ,SUV / Cross over,5.0,AT,petrol,others,0,new
-2020,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,gold,23000,used
-2018,Ford,Fiesta,Mỹ,Hatchback,5.0,AT,petrol,white,65000,used
-2002,Kia,Pride,Hàn Quốc,Sedan,5.0,MT,petrol,white,15000,used
-2017,Mitsubishi,Pajero Sport,Việt Nam,SUV / Cross over,7.0,MT,oil,gold,95000,used
-2016,Mercedes Benz,GLE Class,Mỹ,SUV / Cross over,5.0,AT,petrol,white,28000,used
-2018,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,white,68000,used
-2010,Toyota,Corolla Altis,Đài Loan,Sedan,5.0,AT,petrol,silver,100000,used
-2019,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,AT,petrol,brown,100000,used
-2018,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,grey,95000,used
-2020,Mitsubishi,Xpander Cross,Nước khác,SUV / Cross over,5.0,AT,petrol,orange,43000,used
-2017,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,grey,79166,used
-2022,Mercedes Benz,C Class,Đức,Sedan,5.0,AT,petrol,blue,6000,used
-2021,Kia,Sedona,Việt Nam,Minivan (MPV),7.0,AT,oil,red,46123,used
-2019,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,white,13000,used
-2020,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,gold,68000,used
-2017,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,grey,200000,used
-2013,Ford,Everest,Việt Nam,SUV / Cross over,7.0,AT,oil,black,90000,used
-2021,Hyundai,Kona,Thái Lan,SUV / Cross over,5.0,AT,petrol,red,25101,used
-2007,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,gold,100000,used
-2018,Chevrolet,Trailblazer,Thái Lan,SUV / Cross over,7.0,AT,oil,white,46000,used
-2009,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,green,110000,used
-2003,Toyota,Camry,Việt Nam,Sedan,5.0,AT,petrol,black,200000,used
-2015,Ford,EcoSport,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,20000,used
-2023,Toyota,Veloz,Việt Nam,Minivan (MPV),7.0,AT,petrol,black,0,new
-2022,Honda,City,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,6500,used
-2018,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,120000,used
-2010,Honda,Civic,Việt Nam,Sedan,4.0,MT,petrol,black,90000,used
-2012,Hyundai,Grand Starex,Hàn Quốc,Minivan (MPV),9.0,MT,oil,gold,190000,used
-2023,Ford,Ranger,Thái Lan,Pick-up (bán tải),4.0,AT,oil,grey,0,new
-2022,Toyota,Corolla Cross,Thái Lan,SUV / Cross over,5.0,AT,hybrid,grey,35200,used
-2023,Vinfast,VF9,Việt Nam,SUV / Cross over,6.0,AT,petrol,black,6000,used
-2017,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,grey,31000,used
-2021,Mazda,2,Thái Lan,Sedan,5.0,AT,petrol,brown,7500,used
-2020,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,gold,77000,used
-2022,Vinfast,VFe34,Việt Nam,SUV / Cross over,5.0,AT,electric,blue,10000,used
-2019,Vinfast,Lux A2.0,Việt Nam,Sedan,5.0,AT,petrol,red,55000,used
-1994,Toyota,Corona,Nhật Bản,Sedan,5.0,MT,petrol,white,200000,used
-2018,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,blue,68000,used
-2020,Kia,Soluto,Việt Nam,Sedan,5.0,AT,petrol,red,38000,used
-2015,Toyota,Yaris,Thái Lan,Hatchback,5.0,AT,petrol,white,31000,used
-2019,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,white,63000,used
-2018,Mazda,CX 5,Nhật Bản,SUV / Cross over,5.0,AT,petrol,red,42556,used
-2018,Mercedes Benz,GLC,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,23000,used
-1995,Mazda,626,Nhật Bản,Sedan,5.0,MT,petrol,silver,99999,used
-2021,Mazda,CX 8,Việt Nam,SUV / Cross over,7.0,AT,petrol,grey,0,used
-2015,Chevrolet,Spark,Việt Nam,Hatchback,5.0,AT,petrol,green,70000,used
-2005,Toyota,Corolla,Nhật Bản,Sedan,5.0,MT,petrol,white,222222,used
-2023,Kia,Sonet,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,others,0,new
-2012,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,gold,137000,used
-2022,Honda,Civic,Thái Lan,Sedan,2.0,AT,petrol,white,6000,used
-2022,Mercedes Benz,E Class,Việt Nam,Sedan,5.0,AT,petrol,red,0,new
-2018,Toyota,Innova,Việt Nam,SUV / Cross over,8.0,MT,petrol,white,60000,used
-2020,Mitsubishi,Attrage,Việt Nam,Sedan,5.0,AT,electric,white,37000,used
-2023,Toyota,Corolla Cross,Thái Lan,SUV / Cross over,5.0,AT,petrol,grey,0,new
-2020,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,white,50000,used
-2022,Mazda,3,Việt Nam,Sedan,2.0,AT,petrol,red,13000,used
-2022,Mercedes Benz,E Class,Việt Nam,Sedan,5.0,AT,petrol,black,14000,used
-2014,Kia,Picanto,Hàn Quốc,Hatchback,5.0,AT,petrol,red,70000,used
-2011,Toyota,Vios,Nhật Bản,Sedan,5.0,AT,petrol,silver,70000,used
-2022,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,30000,used
-2018,Ford,Everest,Thái Lan,SUV / Cross over,7.0,AT,oil,blue,59999,used
-2017,Kia,Cerato,Hàn Quốc,Sedan,5.0,AT,petrol,white,88,used
-2016,Ford,Ranger,Việt Nam,Pick-up (bán tải),5.0,MT,oil,black,12000,used
-2017,Toyota,Corolla Altis,Việt Nam,Sedan,5.0,AT,petrol,brown,77000,used
-2019,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,gold,95000,used
-2008,Mercedes Benz,Dòng khác,Đức,Kiểu dáng khác,16.0,MT,oil,silver,12345,used
-2016,Ford,Fiesta,Việt Nam,Hatchback,5.0,AT,petrol,white,70000,used
-2022,Ford,Ranger,Mỹ,Pick-up (bán tải),5.0,AT,oil,white,8400,used
-2014,Toyota,Sienna,Mỹ,SUV / Cross over,8.0,AT,petrol,white,66000,used
-2014,Ford,Transit,Việt Nam,Minivan (MPV),16.0,MT,oil,silver,219000,used
-2006,Mercedes Benz,Sprinter,Đức,Sedan,7.0,MT,oil,silver,37777,used
-2022,Ford,Ranger,Việt Nam,Pick-up (bán tải),2.0,AT,oil,red,30000,used
-2021,Ford,Ranger,Việt Nam,Pick-up (bán tải),5.0,AT,oil,black,21998,used
-2008,Kia,Morning,Hàn Quốc,Hatchback,5.0,AT,petrol,blue,95000,used
-2015,Hyundai,Santa Fe,Hàn Quốc,SUV / Cross over,7.0,AT,petrol,gold,115000,used
+2016,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,blue,8324,used
+2008,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,200000,used
+2017,Hyundai,Grand i10,Việt Nam,Hatchback,5.0,MT,petrol,white,78000,used
+2023,Toyota,Veloz,Việt Nam,Minivan (MPV),7.0,AT,petrol,white,41000,used
+2023,Hyundai,Santa Fe,Việt Nam,SUV / Cross over,7.0,AT,petrol,red,0,new
+2018,Chevrolet,Trailblazer,Thái Lan,SUV / Cross over,7.0,AT,oil,silver,66000,used
+2011,Kia,Carens,Việt Nam,Minivan (MPV),7.0,AT,petrol,gold,142520,used
+2021,Hyundai,Tucson,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,50000,used
+2017,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,red,89000,used
+2021,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,red,20000,used
+2010,Toyota,Fortuner,Nhật Bản,SUV / Cross over,7.0,AT,petrol,black,99000,used
+2016,Toyota,Vios,Nhật Bản,Sedan,5.0,MT,petrol,gold,80000,used
+2019,Mazda,BT 50,Thái Lan,Pick-up (bán tải),5.0,AT,petrol,brown,84000,used
+2023,Hyundai,Santa Fe,Việt Nam,SUV / Cross over,7.0,AT,petrol,others,0,new
+2011,Mercedes Benz,GL Class,Mỹ,SUV / Cross over,7.0,AT,petrol,black,70000,used
+2022,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,red,19000,used
+2014,Toyota,Innova,Việt Nam,Sedan,8.0,MT,petrol,silver,150000,used
+2022,Ford,Ranger,Việt Nam,Pick-up (bán tải),2.0,AT,oil,orange,15000,used
+2020,Vinfast,1083,Việt Nam,SUV / Cross over,7.0,AT,petrol,red,50000,used
+2019,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,black,42000,used
+2022,Kia,K3,Việt Nam,Sedan,5.0,AT,petrol,white,10000,used
+2015,Toyota,Land Cruiser Prado,Nhật Bản,SUV / Cross over,8.0,AT,petrol,gold,60000,used
+2016,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,71000,used
+2016,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,white,80000,used
+2018,Kia,Cerato,Việt Nam,Sedan,5.0,AT,petrol,red,34000,used
+2014,Suzuki,Swift,Nhật Bản,Hatchback,5.0,AT,petrol,blue,80000,used
+2020,Kia,Seltos,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,11000,used
+2019,Honda,City,Nhật Bản,Sedan,5.0,AT,petrol,black,35000,used
+2022,Suzuki,Ertiga,Nước khác,Minivan (MPV),7.0,AT,petrol,silver,0,new
+2019,Toyota,Corolla Altis,Nhật Bản,Sedan,5.0,MT,petrol,silver,70000,used
+2021,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,black,38000,used
+2015,Kia,Rondo,Việt Nam,SUV / Cross over,7.0,AT,petrol,black,76,used
+2016,Mercedes Benz,C Class,Đức,Sedan,5.0,AT,petrol,black,30000,used
+2005,Toyota,Corolla Altis,Nhật Bản,Sedan,5.0,MT,petrol,black,5,used
+2016,Toyota,Innova,Việt Nam,SUV / Cross over,8.0,MT,petrol,silver,12,used
+2007,Toyota,Innova,Nhật Bản,Minivan (MPV),8.0,MT,petrol,silver,25000,used
+2013,Mazda,BT 50,Thái Lan,Pick-up (bán tải),5.0,AT,oil,green,89000,used
+2019,Ford,Transit,Việt Nam,Sedan,16.0,MT,oil,silver,120000,used
+2021,Vinfast,Lux A2.0,Việt Nam,Sedan,5.0,AT,petrol,brown,32000,used
+2022,Mitsubishi,Outlander,Nhật Bản,SUV / Cross over,9.0,AT,petrol,white,36,used
+2017,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,silver,17800,used
+2010,Toyota,Vios,Nhật Bản,Sedan,5.0,AT,petrol,silver,12457,used
+2017,Kia,Sedona,Việt Nam,Minivan (MPV),7.0,AT,oil,white,140000,used
+2016,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,others,70000,used
+2014,Toyota,Land Cruiser Prado,Nhật Bản,SUV / Cross over,7.0,AT,petrol,black,235000,used
+2006,Toyota,Yaris,Nhật Bản,Hatchback,5.0,AT,petrol,silver,130000,used
+2022,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,white,10000,used
+2018,Toyota,Corolla Altis,Thái Lan,Sedan,5.0,AT,petrol,white,79999,used
+2014,Mazda,2,Việt Nam,Hatchback,5.0,AT,petrol,red,7777,used
+2004,Daewoo,Matiz,Hàn Quốc,Hatchback,4.0,MT,petrol,white,99999,used
+2009,Toyota,Yaris,Nhật Bản,Hatchback,5.0,AT,petrol,silver,100000,used
+2003,Ford,Ranger,Việt Nam,Pick-up (bán tải),5.0,MT,oil,grey,250000,used
+2021,Mitsubishi,Xpander Cross,Nhật Bản,SUV / Cross over,7.0,AT,petrol,black,48000,used
+2018,Ford,Mustang,Mỹ,Kiểu dáng khác,4.0,AT,petrol,red,40000,used
+2014,Toyota,Hilux,Thái Lan,Pick-up (bán tải),5.0,MT,oil,black,150000,used
+2010,Ford,Ranger,Việt Nam,Pick-up (bán tải),5.0,MT,oil,black,130000,used
+2008,Hyundai,Santa Fe,Hàn Quốc,SUV / Cross over,7.0,MT,petrol,gold,110000,used
+2022,Toyota,Corolla Cross,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,16000,used
+2017,Honda,City,Nhật Bản,Sedan,5.0,MT,petrol,white,190000,used
+2021,Hyundai,Grand i10,Việt Nam,Hatchback,5.0,MT,petrol,red,16000,used
+2020,Mazda,3,Việt Nam,Sedan,5.0,AT,petrol,red,17000,used
+2019,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,gold,80000,used
+2008,Ford,Everest,Mỹ,SUV / Cross over,7.0,MT,oil,red,79000,used
+2016,Toyota,Fortuner,Việt Nam,SUV / Cross over,8.0,AT,petrol,white,90000,used
+2016,Mercedes Benz,E Class,Việt Nam,Sedan,5.0,AT,petrol,white,35000,used
+2017,Mitsubishi,Attrage,Thái Lan,Sedan,5.0,AT,petrol,silver,75316,used
+2018,Chevrolet,Aveo,Việt Nam,Sedan,5.0,AT,petrol,black,71000,used
+2022,Hyundai,Tucson,Việt Nam,SUV / Cross over,2.0,AT,oil,white,34000,used
+2008,Hyundai,Verna,Hàn Quốc,Sedan,5.0,MT,petrol,black,210000,used
+2008,Chevrolet,Captiva,Việt Nam,SUV / Cross over,7.0,AT,petrol,gold,95000,used
+2018,Mazda,3,Việt Nam,Sedan,5.0,AT,petrol,black,60000,used
+2022,Mitsubishi,Xpander,Nước khác,SUV / Cross over,7.0,AT,petrol,white,50000,used
+2007,Daewoo,Gentra,Việt Nam,Sedan,5.0,MT,petrol,black,28000,used
+2021,Honda,CR V,Nhật Bản,SUV / Cross over,7.0,AT,petrol,black,23918,used
+2016,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,gold,72000,used
+2021,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,gold,22000,used
+2019,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,blue,47000,used
+2009,Chevrolet,Spark,Việt Nam,Hatchback,5.0,MT,petrol,white,123,used
+2009,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,blue,80000,used
+2005,Hyundai,Santa Fe,Hàn Quốc,Sedan,5.0,AT,oil,silver,12,used
+2017,Honda,Civic,Thái Lan,Sedan,5.0,AT,petrol,white,100000,used
+2019,Honda,City,Nhật Bản,Sedan,5.0,AT,petrol,white,21085,used
+2018,Hyundai,Grand i10,Việt Nam,Hatchback,5.0,AT,petrol,brown,65000,used
+2011,Toyota,Camry,Việt Nam,Sedan,5.0,AT,petrol,black,120000,used
+2022,Suzuki,Dòng khác,Nhật Bản,SUV / Cross over,7.0,MT,petrol,white,123456,used
+2019,Kia,Sedona,Việt Nam,Minivan (MPV),7.0,AT,oil,black,77000,used
+2008,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,90000,used
+2023,Honda,HR-V,Thái Lan,SUV / Cross over,5.0,AT,petrol,black,0,new
+2009,Suzuki,Dòng khác,Nhật Bản,Kiểu dáng khác,2.0,MT,petrol,white,100000,used
+2017,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,white,67000,used
+2008,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,190000,used
+2016,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,AT,petrol,silver,12000,used
+2022,Suzuki,Ertiga,Nhật Bản,Minivan (MPV),7.0,AT,hybrid,blue,0,new
+2010,Honda,Accord,Nhật Bản,Sedan,5.0,AT,petrol,white,100000,used
+2015,Toyota,Hilux,Thái Lan,Pick-up (bán tải),5.0,MT,oil,silver,97000,used
+2022,Ford,Ranger,Việt Nam,Pick-up (bán tải),2.0,AT,oil,others,27000,used
+2021,Mitsubishi,Xpander,Thái Lan,Minivan (MPV),7.0,AT,petrol,brown,25000,used
+2018,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,40000,used
+1999,Daewoo,Matiz,Việt Nam,Hatchback,5.0,MT,petrol,blue,1,used
+2016,Hyundai,Tucson,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,white,61000,used
+2003,Toyota,Camry,Việt Nam,Sedan,5.0,MT,petrol,black,120,used
+2015,Hyundai,Tucson,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,red,9,used
+2021,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,black,23452,used
+2020,Hyundai,Accent,Nước khác,Sedan,5.0,MT,petrol,others,40000,used
+2023,Mazda,CX 5,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,blue,6000,used
+2015,Ford,Everest,Việt Nam,SUV / Cross over,7.0,MT,oil,gold,100000,used
+2021,Honda,Brio,Nước khác,Hatchback,5.0,AT,petrol,white,33000,used
+2010,Hyundai,Tucson,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,red,30000,used
+2005,Chevrolet,Matiz,Nhật Bản,Hatchback,4.0,MT,petrol,green,300000,used
+2010,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,12345,used
+2020,Hyundai,Accent,Hàn Quốc,Sedan,5.0,MT,petrol,white,100000,used
+2019,Kia,Soluto,Hàn Quốc,Sedan,5.0,AT,petrol,black,65555,used
+2016,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,silver,80000,used
+2020,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,white,50000,used
+2021,Honda,CR V,Việt Nam,SUV / Cross over,7.0,AT,petrol,blue,46000,used
+2023,Ford,Everest,Thái Lan,SUV / Cross over,7.0,AT,oil,red,0,new
+2005,Toyota,Land Cruiser,Nhật Bản,SUV / Cross over,8.0,MT,petrol,pink,180000,used
+2017,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,black,48000,used
+2009,Daewoo,GentraX,Hàn Quốc,Hatchback,5.0,MT,petrol,silver,167000,used
+2016,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,white,82336,used
+2021,Hyundai,Grand i10,Việt Nam,Sedan,5.0,AT,petrol,white,400000,used
+2016,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,orange,85000,used
+2006,Kia,Morning,Hàn Quốc,Van,2.0,MT,petrol,silver,65655,used
+1992,Kia,Pride,Hàn Quốc,Sedan,4.0,MT,petrol,white,150000,used
+2023,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,8500,used
+2023,Mitsubishi,Outlander,Việt Nam,SUV / Cross over,7.0,AT,petrol,grey,0,new
+2019,Suzuki,Ertiga,Ấn Độ,Minivan (MPV),5.0,AT,petrol,white,80000,used
+2017,Kia,Cerato,Việt Nam,Sedan,5.0,AT,petrol,white,58000,used
+2014,Ford,Transit,Việt Nam,Pick-up (bán tải),6.0,MT,oil,silver,190000,used
+2019,Honda,CR V,Thái Lan,SUV / Cross over,5.0,AT,petrol,white,30000,used
+2013,Kia,Morning,Hàn Quốc,Hatchback,2.0,AT,petrol,white,110000,used
+2017,Toyota,Corolla Altis,Việt Nam,Sedan,5.0,AT,petrol,silver,68000,used
+2015,Ford,Fiesta,Mỹ,Sedan,5.0,AT,petrol,red,50000,used
+2022,Toyota,Veloz,Việt Nam,SUV / Cross over,9.0,AT,petrol,black,3800,used
+2002,Ford,Laser,Việt Nam,Sedan,5.0,MT,petrol,silver,230000,used
+2002,Ford,Laser,Việt Nam,Sedan,5.0,MT,petrol,gold,8000,used
+2017,Chevrolet,Colorado,Thái Lan,Pick-up (bán tải),4.0,AT,oil,red,9800,used
+2016,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,silver,71000,used
+2018,Mitsubishi,Pajero Sport,Thái Lan,SUV / Cross over,7.0,AT,petrol,silver,29000,used
+2019,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,white,71000,used
+2019,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,60000,used
+2013,Honda,CR V,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,86000,used
+2022,Mitsubishi,Xpander,Nước khác,Minivan (MPV),7.0,AT,petrol,white,22000,used
+2017,Suzuki,Swift,Việt Nam,Hatchback,5.0,AT,petrol,green,87000,used
+2015,Honda,CR V,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,97000,used
+2002,Suzuki,Wagon R+,Nhật Bản,Hatchback,5.0,MT,petrol,white,12345,used
+2018,Kia,Cerato,Việt Nam,Sedan,5.0,AT,petrol,white,58000,used
+2008,Toyota,Innova,Việt Nam,SUV / Cross over,8.0,MT,petrol,silver,80000,used
+2022,Kia,K3,Việt Nam,Sedan,5.0,AT,petrol,red,20700,used
+2022,Kia,K5,Việt Nam,Sedan,5.0,AT,petrol,red,35000,used
+2018,Mercedes Benz,E Class,Việt Nam,Sedan,5.0,AT,petrol,white,22000,used
+2019,Vinfast,Fadil,Việt Nam,Hatchback,5.0,AT,petrol,grey,25000,used
+2013,Ford,Focus,Mỹ,Hatchback,5.0,AT,petrol,silver,62999,used
+2000,Toyota,Camry,Nhật Bản,Sedan,5.0,MT,petrol,grey,19000,used
+2018,Hyundai,Grand i10,Việt Nam,Sedan,5.0,AT,petrol,white,820000,used
+2014,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,100000,used
+2008,Ford,Ranger,Việt Nam,Pick-up (bán tải),5.0,MT,oil,black,120000,used
+2018,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,white,72000,used
+2007,Ford,Everest,Việt Nam,SUV / Cross over,7.0,MT,oil,silver,110000,used
+2014,Toyota,Innova,Việt Nam,Minivan (MPV),7.0,AT,petrol,silver,160000,used
+2005,Suzuki,Aerio,Việt Nam,Sedan,2.0,MT,hybrid,white,1900,used
+2010,Kia,Morning,Hàn Quốc,Hatchback,2.0,AT,petrol,silver,130000,used
+2018,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,others,79000,used
+2007,Honda,Odyssey,Mỹ,Minivan (MPV),7.0,AT,petrol,others,100000,used
+2019,Kia,Cerato,Việt Nam,Sedan,5.0,MT,petrol,red,76000,used
+2001,Toyota,Camry,Việt Nam,Sedan,5.0,MT,petrol,pink,167890,used
+2022,Vinfast,Lux A2.0,Việt Nam,Sedan,5.0,AT,petrol,black,16000,used
+2005,Mercedes Benz,C Class,Đức,Sedan,4.0,AT,petrol,black,160000,used
+2016,Kia,Dòng khác,Hàn Quốc,Van,2.0,AT,petrol,silver,10000,used
+1991,Hyundai,Sonata,Hàn Quốc,Hatchback,5.0,MT,petrol,silver,100000,used
+2022,Kia,K3,Việt Nam,Sedan,2.0,AT,petrol,red,20000,used
+2010,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,silver,230000,used
+2021,Mitsubishi,Xpander,Nước khác,Minivan (MPV),7.0,AT,petrol,white,15000,used
+2014,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,116000,used
+2022,Suzuki,Ertiga,Việt Nam,Kiểu dáng khác,7.0,MT,petrol,others,10000,used
+2023,Mitsubishi,Xpander,Ấn Độ,Minivan (MPV),7.0,AT,petrol,silver,0,new
+1988,Toyota,Camry,Nhật Bản,Sedan,5.0,MT,petrol,red,123456,used
+2014,Kia,Carens,Việt Nam,Minivan (MPV),7.0,MT,petrol,black,120000,used
+2020,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,brown,32000,used
+2022,Toyota,Corolla Cross,Thái Lan,SUV / Cross over,5.0,AT,petrol,white,9500,used
+2019,Ford,F 150,Mỹ,Pick-up (bán tải),5.0,AT,petrol,black,24000,used
+2014,Suzuki,Swift,Việt Nam,Hatchback,5.0,AT,petrol,white,62000,used
+2014,Toyota,Camry,Việt Nam,Sedan,5.0,AT,petrol,gold,85000,used
+2019,Hyundai,Grand i10,Hàn Quốc,Sedan,5.0,MT,petrol,white,150000,used
+2019,Mitsubishi,Triton,Thái Lan,Pick-up (bán tải),5.0,AT,oil,white,68000,used
+2016,Mazda,6,Nhật Bản,Sedan,5.0,AT,petrol,white,48000,used
+2011,Toyota,Camry,Việt Nam,Sedan,5.0,AT,petrol,black,160000,used
+2008,Chevrolet,Vivant,Việt Nam,SUV / Cross over,7.0,MT,petrol,silver,197884,used
+2009,Kia,Carens,Việt Nam,Minivan (MPV),7.0,AT,petrol,silver,130000,used
+2020,Kia,Soluto,Việt Nam,Sedan,5.0,MT,petrol,red,41000,used
+2016,Mitsubishi,Triton,Thái Lan,Pick-up (bán tải),5.0,MT,oil,red,160000,used
+2022,Mercedes Benz,V Class,Mỹ,Minivan (MPV),7.0,AT,petrol,black,2000,used
+2008,Toyota,Corolla Altis,Việt Nam,Sedan,5.0,MT,petrol,black,80000,used
+2019,Honda,HR-V,Thái Lan,SUV / Cross over,5.0,AT,petrol,black,23000,used
+2019,Mitsubishi,Xpander,Nước khác,Minivan (MPV),5.0,AT,petrol,white,42000,used
+2023,Mitsubishi,Xpander,Ấn Độ,Minivan (MPV),7.0,AT,petrol,white,0,new
 2015,Mercedes Benz,CLA Class,Đức,Sedan,5.0,AT,petrol,black,80000,used
-2018,Toyota,Land Cruiser,Nhật Bản,SUV / Cross over,8.0,AT,petrol,white,36963,used
-2010,Ford,Escape,Việt Nam,SUV / Cross over,5.0,AT,petrol,silver,120000,used
-2016,Mazda,2,Việt Nam,Hatchback,5.0,AT,petrol,white,47000,used
-2018,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,grey,60000,used
-2022,Kia,Soluto,Việt Nam,Sedan,5.0,AT,petrol,black,27000,used
-2020,Kia,Cerato,Việt Nam,Sedan,5.0,AT,petrol,red,18000,used
-2021,Kia,Rondo,Việt Nam,Minivan (MPV),7.0,AT,petrol,white,39000,used
-2012,Ford,Fiesta,Việt Nam,Hatchback,5.0,AT,petrol,white,52000,used
-2018,Mercedes Benz,GLC,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,23000,used
-2016,Toyota,Fortuner,Việt Nam,SUV / Cross over,8.0,AT,petrol,silver,79800,used
-2021,Toyota,Camry,Thái Lan,Sedan,5.0,AT,petrol,red,37000,used
-2018,Mitsubishi,Attrage,Thái Lan,Sedan,5.0,MT,petrol,red,58686,used
-2022,Mercedes Benz,GLC Class,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,20,used
-2011,Toyota,Corolla Altis,Việt Nam,Sedan,5.0,AT,petrol,silver,135000,used
-2020,Hyundai,Accent,Việt Nam,Sedan,5.0,AT,petrol,white,53000,used
+2019,Honda,Brio,Thái Lan,Hatchback,5.0,AT,petrol,orange,36000,used
+2022,Kia,Sonet,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,11000,used
+2002,Kia,CD5,Hàn Quốc,Hatchback,5.0,MT,petrol,white,120000,used
+2020,Chevrolet,Colorado,Thái Lan,Pick-up (bán tải),5.0,AT,petrol,red,62339,used
+2019,Hyundai,Grand i10,Việt Nam,Hatchback,5.0,MT,petrol,gold,50000,used
+2021,Hyundai,Tucson,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,35000,used
+2017,Ford,Explorer,Mỹ,SUV / Cross over,8.0,AT,petrol,white,65000,used
+2011,Kia,Morning,Việt Nam,Hatchback,5.0,MT,petrol,green,80000,used
+2020,Honda,CR V,Việt Nam,SUV / Cross over,7.0,AT,petrol,white,29000,used
+2017,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,silver,81000,used
+2014,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,black,90000,used
+2020,Toyota,Rush,Nước khác,SUV / Cross over,5.0,AT,petrol,white,67500,used
+2010,Chevrolet,Spark,Việt Nam,Hatchback,5.0,AT,petrol,gold,140000,used
+2011,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,AT,petrol,silver,120000,used
+2010,Daewoo,Lacetti,Hàn Quốc,Sedan,5.0,MT,petrol,silver,522,used
+2016,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,gold,90000,used
+2014,Honda,CR V,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,62000,used
+2021,Hyundai,Tucson,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,12000,used
+2020,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,white,60000,used
+2016,Hyundai,Accent,Hàn Quốc,Sedan,5.0,MT,petrol,red,111000,used
+2018,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,white,43000,used
+2019,Kia,Soluto,Hàn Quốc,Sedan,5.0,MT,petrol,black,99000,used
+2011,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,grey,13000,used
+2009,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,red,9999,used
+2023,Mitsubishi,Attrage,Nước khác,Sedan,5.0,MT,petrol,white,0,new
+2021,Honda,Brio,Nước khác,Hatchback,5.0,AT,petrol,orange,25000,used
+2007,Chevrolet,Captiva,Việt Nam,SUV / Cross over,7.0,MT,petrol,gold,80000,used
+2009,Hyundai,Tucson,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,black,185000,used
+2020,Hyundai,Grand i10,Việt Nam,Sedan,5.0,MT,petrol,white,70000,used
+2014,Kia,Morning,Hàn Quốc,Hatchback,5.0,MT,petrol,white,520,used
+2021,Toyota,Alphard,Nước khác,Minivan (MPV),7.0,AT,petrol,black,38000,used
+2019,Kia,Sedona,Việt Nam,SUV / Cross over,7.0,AT,oil,white,28300,used
+2009,Hyundai,Genesis,Hàn Quốc,Coupe (2 cửa),4.0,AT,petrol,white,70000,used
+2016,Toyota,Fortuner,Việt Nam,SUV / Cross over,7.0,MT,oil,silver,93000,used
+2022,Honda,HR-V,Thái Lan,SUV / Cross over,5.0,AT,petrol,red,10000,used
+2022,Mercedes Benz,E Class,Việt Nam,Sedan,5.0,AT,petrol,white,25000,used
+2018,Toyota,Land Cruiser Prado,Nhật Bản,SUV / Cross over,7.0,AT,petrol,white,19000,used
+2017,Hyundai,Elantra,Việt Nam,Sedan,5.0,AT,petrol,white,80000,used
+2008,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,gold,126000,used
+2019,Hyundai,Elantra,Việt Nam,Sedan,5.0,AT,petrol,black,37000,used
+2007,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,black,110000,used
+2017,Hyundai,Grand i10,Việt Nam,Sedan,5.0,MT,petrol,silver,160000,used
+2021,Mazda,3,Việt Nam,Sedan,5.0,AT,petrol,white,42000,used
+2005,Mitsubishi,Grandis,Nhật Bản,SUV / Cross over,7.0,AT,petrol,gold,124000,used
+2021,Toyota,Vios,Nhật Bản,Sedan,5.0,MT,petrol,white,49999,used
+2022,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,blue,25000,used
+2022,Vinfast,1083,Việt Nam,Sedan,5.0,AT,petrol,red,8000,used
+2022,Mercedes Benz,GLC Class,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,0,new
+2003,Toyota,Zace,Nhật Bản,SUV / Cross over,8.0,MT,petrol,blue,150000,used
+2007,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,silver,12,used
+2017,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,silver,59000,used
+2015,Kia,Sorento,Việt Nam,SUV / Cross over,7.0,AT,petrol,red,120000,used
+2022,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,red,3900,used
+2019,Mitsubishi,Xpander,Nước khác,Minivan (MPV),5.0,AT,petrol,white,83400,used
+1985,Honda,Accord,Nhật Bản,Sedan,4.0,MT,petrol,red,12345,used
+2023,Mitsubishi,Xpander,Thái Lan,Minivan (MPV),7.0,AT,petrol,white,0,new
+2019,Mercedes Benz,E Class,Việt Nam,Sedan,5.0,AT,petrol,black,26800,used
+2019,Mercedes Benz,GLC,Đức,SUV / Cross over,5.0,AT,petrol,white,60000,used
+2011,Chevrolet,Cruze,Việt Nam,Sedan,5.0,MT,petrol,silver,123000,used
+2022,Honda,City,Nhật Bản,Sedan,5.0,AT,petrol,blue,54000,used
+2013,Toyota,Corolla Altis,Việt Nam,Sedan,5.0,AT,petrol,black,125000,used
+2021,Mitsubishi,Xpander,Nước khác,Minivan (MPV),7.0,MT,petrol,brown,17500,used
+2019,Honda,Brio,Việt Nam,Hatchback,5.0,AT,petrol,gold,26000,used
+2008,Mercedes Benz,C Class,Đức,Sedan,5.0,AT,petrol,white,150000,used
+2008,Toyota,Innova,Nhật Bản,Minivan (MPV),8.0,MT,petrol,silver,280000,used
+2015,Kia,Sorento,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,61000,used
+2020,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,gold,32000,used
+2022,Vinfast,Lux A2.0,Việt Nam,Sedan,5.0,AT,petrol,white,10000,used
+2023,Toyota,Vios,Việt Nam,Sedan,5.0,MT,petrol,silver,9000,used
+2017,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,silver,54000,used
+2018,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,AT,oil,white,60000,used
+2018,Ford,EcoSport,Mỹ,SUV / Cross over,5.0,AT,petrol,orange,61500,used
+2015,Kia,Rio,Hàn Quốc,Hatchback,5.0,AT,petrol,white,580000,used
+2022,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,blue,23000,used
+2019,Hyundai,Santa Fe,Việt Nam,SUV / Cross over,7.0,AT,petrol,white,65000,used
+2009,Honda,CR V,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,120000,used
+2016,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,grey,120000,used
+2017,Suzuki,Dòng khác,Nhật Bản,Van,2.0,MT,petrol,gold,41000,used
+2023,Toyota,Veloz,Việt Nam,Kiểu dáng khác,7.0,AT,petrol,white,12000,used
+2022,Toyota,Raize,Việt Nam,SUV / Cross over,5.0,AT,petrol,white,9000,used
+2018,Hyundai,Accent,Việt Nam,Sedan,5.0,MT,petrol,silver,89000,used
+2020,Kia,Sedona,Việt Nam,Minivan (MPV),7.0,AT,oil,red,30000,used
+2019,Hyundai,Elantra,Hàn Quốc,Sedan,5.0,AT,petrol,red,50000,used
+2023,Toyota,Wigo,Nước khác,Hatchback,5.0,AT,petrol,white,50,used
+2007,Chevrolet,Captiva,Việt Nam,SUV / Cross over,7.0,AT,petrol,gold,11000,used
+2004,Mercedes Benz,C Class,Đức,Sedan,5.0,AT,petrol,black,150000,used
+2022,Honda,CR V,Nước khác,SUV / Cross over,5.0,AT,petrol,black,13000,used
+2013,Mercedes Benz,C Class,Đức,Sedan,5.0,AT,petrol,white,52000,used
+2008,Daewoo,Gentra,Việt Nam,Sedan,5.0,MT,petrol,white,90000,used
+2009,Honda,Civic,Việt Nam,Sedan,5.0,MT,petrol,black,120000,used
+2003,Mitsubishi,Jolie,Việt Nam,SUV / Cross over,7.0,MT,petrol,gold,20000,used
+2018,Toyota,Innova,Việt Nam,Minivan (MPV),8.0,MT,petrol,others,64221,used
+2020,Kia,Seltos,Hàn Quốc,SUV / Cross over,5.0,AT,petrol,white,28000,used
+2020,Toyota,Corolla Cross,Thái Lan,SUV / Cross over,5.0,AT,petrol,blue,16500,used
+2021,Ford,Everest,Thái Lan,SUV / Cross over,7.0,AT,oil,black,58000,used
+2015,Suzuki,Swift,Việt Nam,Hatchback,5.0,AMT,petrol,white,70000,used
+2021,Vinfast,Lux A2.0,Việt Nam,Sedan,5.0,AT,petrol,white,28000,used
+2014,Toyota,Innova,Việt Nam,Minivan (MPV),7.0,MT,petrol,brown,96000,used
+2013,Chevrolet,Spark,Việt Nam,Van,2.0,MT,petrol,silver,60000,used
+2020,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,blue,20000,used
+2013,Toyota,Vios,Hàn Quốc,Sedan,5.0,MT,petrol,silver,16000,used
+2018,Mazda,3,Việt Nam,Sedan,5.0,AT,petrol,white,56000,used
+2018,Hyundai,Grand i10,Việt Nam,Sedan,5.0,AT,petrol,white,80000,used
+2017,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,black,65000,used
+2017,Mazda,2,Việt Nam,Sedan,5.0,AT,petrol,grey,50000,used
+2022,Hyundai,Accent,Hàn Quốc,Sedan,5.0,AT,petrol,white,26000,used
+2022,Toyota,Corolla Cross,Thái Lan,SUV / Cross over,5.0,AT,petrol,white,18000,used
+2020,Mercedes Benz,C Class,Đức,Sedan,5.0,AT,petrol,red,19000,used
+2016,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,black,45000,used
+2003,Daewoo,Lanos,Việt Nam,Sedan,5.0,MT,petrol,white,85625,used
+2018,Toyota,Hilux,Thái Lan,Pick-up (bán tải),5.0,AT,oil,orange,60000,used
+2007,Hyundai,Starex,Hàn Quốc,Pick-up (bán tải),6.0,MT,oil,white,250000,used
+2008,Toyota,Camry,Nhật Bản,Sedan,5.0,AT,petrol,black,1179,used
+2019,Vinfast,Lux SA2.0,Việt Nam,SUV / Cross over,5.0,AT,petrol,blue,18000,used
+2020,Ford,Everest,Thái Lan,SUV / Cross over,7.0,AT,oil,red,75000,used
+2009,Kia,Morning,Hàn Quốc,Hatchback,5.0,AT,petrol,red,80000,used
+2003,Mazda,6,Nhật Bản,Sedan,5.0,MT,petrol,silver,123456,used
+2021,Mazda,CX 5,Việt Nam,SUV / Cross over,5.0,AT,petrol,red,52000,used
+2019,Mercedes Benz,C Class,Đức,Sedan,5.0,AT,petrol,white,30000,used
+2016,Kia,Morning,Việt Nam,Hatchback,5.0,AT,petrol,white,79000,used
+2022,Kia,Carnival,Hàn Quốc,SUV / Cross over,7.0,AT,oil,blue,16000,used
+2009,Mercedes Benz,C Class,Việt Nam,Sedan,5.0,AT,petrol,black,180000,used
+2022,Kia,K3,Hàn Quốc,Sedan,5.0,AT,petrol,white,60000,used
+2015,Suzuki,Dòng khác,Nhật Bản,Van,2.0,MT,petrol,white,777777,used
+2020,Toyota,Wigo,Ấn Độ,Hatchback,5.0,AT,petrol,red,46800,used
+2022,Toyota,Veloz,Nước khác,Minivan (MPV),7.0,AT,petrol,others,43000,used
+2023,Honda,City,Việt Nam,Sedan,5.0,AT,petrol,white,3960,used
+2007,Toyota,Vios,Việt Nam,Sedan,5.0,AT,petrol,blue,80000,used
+2006,Mercedes Benz,E Class,Việt Nam,Sedan,5.0,AT,petrol,black,160000,used
+2017,Hyundai,Grand i10,Việt Nam,Sedan,5.0,MT,petrol,white,96000,used
+2020,Ford,Ranger,Thái Lan,Pick-up (bán tải),5.0,MT,oil,blue,51000,used
