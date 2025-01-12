@@ -2,6 +2,15 @@
 
 This project is a FastAPI application for predicting car prices at vucar.
 
+## Report
+
+The latest report can be found here: [link](https://docs.google.com/document/d/19Z7UBl4Te8HHzwaOXbRzGcpIlKpdOoEZ-TlovbhqSX4/edit?usp=sharing)
+
+- Fast recap:
+    - MAE: 40mil vnd
+    - R-squared: approx 91%
+    - Test case: pass 2/3 (pass if predicted value is within 10% interval of the actual value)
+
 ## Requirements
 
 All the requirements are in the requirements.txt.
