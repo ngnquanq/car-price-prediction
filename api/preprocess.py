@@ -1,6 +1,7 @@
 from os import error
 import pandas as pd
 import numpy as np
+import random
 from xgboost import DMatrix
 from typing import List, Optional
 def drop_unncessary_columns(df: pd.DataFrame, cols_to_drop: List[str]):
@@ -55,3 +56,14 @@ def convert_data_dmatrix(df: pd.DataFrame):
         df (pd.DataFrame): the dataframe
     """
     return DMatrix(df, enable_categorical=True, missing=np.NAN)
+
+def df_to_dict(df: pd.DataFrame):
+    """Convert dataframe to dictionary
+
+    Args:
+        df (pd.DataFrame): the dataframe
+    """
+    df['id'] = random.randint(0, 1000000)
+    df['list_id'] = random.randint(0, 1000000)
+    df['list_time'] = random.randint(0, 1000000)
+    return df.to_dict(orient='records')
