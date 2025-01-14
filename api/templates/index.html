@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2 class="mb-4">Car Price Prediction</h2>
+        <form id="predictionForm" onsubmit="submitForm(event)">
+            <div class="row">
+                <!-- Hidden fields -->
+                <input type="hidden" name="id" value="149990878">
+                <input type="hidden" name="list_id" value="109913621">
+                <input type="hidden" name="list_time" value="1694606265000">
+
+                <!-- Visible fields -->
+                <div class="col-md-6 mb-3">
+                    <label for="manufacture_date" class="form-label">Manufacture Year</label>
+                    <input type="number" class="form-control" id="manufacture_date" name="manufacture_date" 
+                           value="2011" min="1900" max="2024" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="brand" class="form-label">Brand</label>
+                    <select class="form-select" id="brand" name="brand" required>
+                        <option value="Ford">Ford</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Kia">Kia</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="model" class="form-label">Model</label>
+                    <input type="text" class="form-control" id="model" name="model" 
+                           value="Fiesta" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="origin" class="form-label">Origin</label>
+                    <select class="form-select" id="origin" name="origin" required>
+                        <option value="Thái Lan">Thái Lan</option>
+                        <option value="Nhật Bản">Nhật Bản</option>
+                        <option value="Hàn Quốc">Hàn Quốc</option>
+                        <option value="Mỹ">Mỹ</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="type" class="form-label">Type</label>
+                    <select class="form-select" id="type" name="type" required>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="SUV">SUV</option>
+                        <option value="MPV">MPV</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="seats" class="form-label">Seats</label>
+                    <select class="form-select" id="seats" name="seats" required>
+                        <option value="5.0">5</option>
+                        <option value="7.0">7</option>
+                        <option value="4.0">4</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="gearbox" class="form-label">Gearbox</label>
+                    <select class="form-select" id="gearbox" name="gearbox" required>
+                        <option value="AT">Automatic (AT)</option>
+                        <option value="MT">Manual (MT)</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="fuel" class="form-label">Fuel Type</label>
+                    <select class="form-select" id="fuel" name="fuel" required>
+                        <option value="petrol">Petrol</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="hybrid">Hybrid</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="color" class="form-label">Color</label>
+                    <select class="form-select" id="color" name="color" required>
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                        <option value="silver">Silver</option>
+                        <option value="red">Red</option>
+                        <option value="blue">Blue</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="mileage_v2" class="form-label">Mileage (km)</label>
+                    <input type="number" class="form-control" id="mileage_v2" name="mileage_v2" 
+                           value="10000" min="0" required>
+                </div>
+
+                <div class="col-md-12 mb-3">
+                    <label for="condition" class="form-label">Condition</label>
+                    <select class="form-select" id="condition" name="condition" required>
+                        <option value="used">Used</option>
+                        <option value="new">New</option>
+                    </select>
+                </div>
+
+                <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary">Predict Price</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="result" class="mt-4"></div>
+    </div>
+</div>
+
+<script>
+async function submitForm(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    // Convert numeric fields
+    data.id = parseInt(data.id);
+    data.list_id = parseInt(data.list_id);
+    data.list_time = parseInt(data.list_time);
+    data.manufacture_date = parseInt(data.manufacture_date);
+    data.seats = parseFloat(data.seats);
+    data.mileage_v2 = parseInt(data.mileage_v2);
+    
+    try {
+        const response = await fetch('/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (!response.ok) {
+            throw new Error('Prediction failed');
+        }
+        
+        const result = await response.json();
+        document.getElementById('result').innerHTML = `
+            <div class="alert alert-success">
+                <h4 class="alert-heading">Predicted Price:</h4>
+                <p class="display-4 text-center">${result.toLocaleString()} VND</p>
+            </div>`;
+    } catch (error) {
+        document.getElementById('result').innerHTML = `
+            <div class="alert alert-danger">
+                <h4 class="alert-heading">Error:</h4>
+                <p>${error.message}</p>
+            </div>`;
+    }
+}
+</script>
+{% endblock %}

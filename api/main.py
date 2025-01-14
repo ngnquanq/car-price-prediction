@@ -1,18 +1,18 @@
 from json import encoder
 from urllib import response
-
-
 import catboost
 from fastapi.testclient import TestClient
 import joblib
 import pytest
 import pandas as pd 
 import xgboost as xgb
+from fastapi import FastAPI, HTTPException, Request  # Add Request here
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from regex import R
 import requests
 from api.pydantic_models import CarPriceData
 import numpy as np
-from fastapi import FastAPI, HTTPException
 from loguru import logger
 import sys 
 import os 
@@ -31,15 +31,22 @@ PARAMS = {
 # Initialize the FastAPI app
 app = FastAPI()
 
+# Initialize templates
+templates = Jinja2Templates(directory="api/templates")
+
+# Mount static files
+app.mount("/static", StaticFiles(directory="api/static"), name="static")
+
 
 # Load the encoder
 encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
 # load the model
 model = catboost.CatBoostRegressor()
 model.load_model(f"{MODEL_PATH}/catboost_model.cbm")
+
 @app.get("/")
-def read_root():
-    return {"Hello": "World"}
+def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.post("/predict")
