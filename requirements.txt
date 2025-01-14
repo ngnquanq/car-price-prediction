@@ -3,7 +3,7 @@ shap==0.46.0
 seaborn==0.13.2
 xgboost==2.1.0
 matplotlib==3.9.0
-fastapi==0.100.0
+fastapi[standard]>=0.112.0,<0.113.0
 causalml==0.15.1
 scikit-learn==1.3.0
 #starlette==0.37.2 # Dependency hell with currunt fastapi :(
@@ -12,7 +12,7 @@ pandas==2.2.2
 flake8==7.1.1 # For veryfiyng the code quality 
 regex
 tabpfn # A new architecture that has potential to outperform xgboost
-loguru==0.7.3# For logging
+loguru==0.7.3 # For logging
 pytest==8.3.4 # For testing the code
 locust==2.32.5 # For load testing
 
