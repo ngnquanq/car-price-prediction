@@ -21,6 +21,12 @@ def create_model():
     return model
 
 @pytest.fixture()
+def create_model_encode():
+    model = catboost.CatBoostRegressor()
+    model.load_model(f"{MODEL_PATH}/catboost_model_autoencode.cbm")
+    return model
+
+@pytest.fixture()
 def create_encoder():
     encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
     return encoder

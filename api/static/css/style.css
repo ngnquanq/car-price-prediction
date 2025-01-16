@@ -47,6 +47,112 @@ form {
 .form-control {
     text-align: center;
     margin-bottom: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    transition: border-color 0.3s ease;
+}
+
+.form-select:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+.dynamic-info {
+    background: #e8f5e9;  /* Light green background */
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.prediction-label {
+    font-size: 1.2rem;
+    color: #2e7d32;  /* Darker green for label */
+    margin-bottom: 0.5rem;
+}
+
+.prediction-value {
+    font-size: 2rem;
+    color: #1b5e20;  /* Dark green for value */
+    font-weight: bold;
+    word-wrap: break-word;  /* Allow long numbers to wrap */
+    overflow-wrap: break-word;
+    hyphens: auto;
+    margin: 0.5rem 0;
+}
+
+.currency {
+    font-size: 1.5rem;
+    color: #2e7d32;
+    margin-top: 0.5rem;
+}
+
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #666;
+}
+
+.info-value {
+    color: #333;
+}
+
+.loading {
+    opacity: 0.7;
+    position: relative;
+}
+
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #2196F3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .btn-primary {

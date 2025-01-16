@@ -42,7 +42,7 @@ app.mount("/static", StaticFiles(directory="api/static"), name="static")
 encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
 # load the model
 model = catboost.CatBoostRegressor()
-model.load_model(f"{MODEL_PATH}/catboost_model.cbm")
+model.load_model(f"{MODEL_PATH}/catboost_model_autoencode.cbm")
 
 @app.get("/")
 def read_root(request: Request):
@@ -66,7 +66,7 @@ def predict(car_data: CarPriceData):
         test_df = preprocess.cast_to_category(df=test_df, cols_to_cast=constants.CAT_COLS)
         
         # # Convert with the label encoder
-        test_df = preprocess.encode_cat_cols(df=test_df, label_encoder=encoder, cat_cols=constants.CAT_COLS)
+        #test_df = preprocess.encode_cat_cols(df=test_df, label_encoder=encoder, cat_cols=constants.CAT_COLS)
         
         
     except Exception as e:
