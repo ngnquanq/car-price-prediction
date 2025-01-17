@@ -2,5 +2,8 @@
 */__pycache__/
 .pytest_cache/
 catboost_info/
+models/*.joblib
+models/*.pkl
+models/*.model
 logs/
 
