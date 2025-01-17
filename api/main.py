@@ -5,6 +5,7 @@ from fastapi.testclient import TestClient
 import joblib
 import pytest
 import pandas as pd 
+import lightgbm as lgb
 import xgboost as xgb
 from fastapi import FastAPI, HTTPException, Request  # Add Request here
 from fastapi.templating import Jinja2Templates
@@ -57,6 +58,37 @@ model_xgb.load_model(f"{MODEL_PATH}/xgb_model.json")
 @app.get("/")
 def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+# Load the LGBM model
+model_lgbm = lgb.Booster(model_file=f"{MODEL_PATH}/lgbm_model.joblib")
+
+@app.post("/predict_lgbm")
+def predict_lgbm(car_data: CarPriceData):
+    # Convert input to dataframe
+    try:
+        test_df = pd.DataFrame([car_data.dict()])
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error converting input to DataFrame: {str(e)}")
+
+    # Preprocess the data
+    try:
+        # Dropping unwanted columns
+        test_df = preprocess.drop_unncessary_columns(df=test_df, cols_to_drop=constants.COLS_TO_DROP)
+        
+        # Convert categorical columns to category
+        test_df = preprocess.cast_to_category(df=test_df, cols_to_cast=constants.CAT_COLS)
+        
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error during preprocessing: {str(e)}")
+
+    # Make prediction
+    try:
+        y_pred = model_lgbm.predict(test_df)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error during prediction: {str(e)}")
+    
+    return float(y_pred[0])
+
 
 @app.post("/predict_xgb")
 def predict_xgb(car_data: CarPriceData):

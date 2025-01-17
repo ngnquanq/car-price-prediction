@@ -1,5 +1,6 @@
 import pandas as pd
 import xgboost as xgb
+import lightgbm as lgb
 import pytest
 import random
 import pandas as pd
@@ -15,15 +16,21 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from api.main import PARAMS, MODEL_PATH
 
 @pytest.fixture()
-def create_model():
+def create_model_xgboost():
     model = catboost.CatBoostRegressor()
     model.load_model(f"{MODEL_PATH}/catboost_model.cbm")
     return model
 
+
 @pytest.fixture()
-def create_model_encode():
+def create_model_catboost():
     model = catboost.CatBoostRegressor()
     model.load_model(f"{MODEL_PATH}/catboost_model_autoencode.cbm")
+    return model
+
+@pytest.fixture()
+def create_model_lgbm():
+    model = lgb.Booster(model_file=f"{MODEL_PATH}/lgbm_model.joblib")
     return model
 
 @pytest.fixture()
