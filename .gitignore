@@ -1,2 +1,6 @@
 .env
-__pycache__/
+*/__pycache__/
+.pytest_cache/
+catboost_info/
+logs/
+

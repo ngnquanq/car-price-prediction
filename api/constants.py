@@ -13,3 +13,10 @@ SAMPLE_DATA = {'id': 149990878, 'list_id': 109913621, 'list_time': 1694606265000
  'color': 'black',
  'mileage_v2': 71000,
  'condition': 'used', 'price':1239000000.0 }# A random sample
+PARAMS={'loss_function': 'MAE',
+    'iterations': 4000,
+    'learning_rate': 0.2,
+    'cat_features': CAT_COLS,
+    'max_depth': 10,
+    'verbose': 100}
+ 
