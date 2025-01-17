@@ -64,9 +64,9 @@ def dont_test_model_inference(create_model, create_encoder, sample_data, actual_
     print(f"Test passed: Predicted value {predicted_value} is within {tolerance*100}% of the actual value {actual_value}.")
 
 
-def test_model_inference_1(create_model, create_encoder, sample_inference_1):
+def test_model_inference_1(create_model_encode, create_encoder, sample_inference_1):
     """Test model inference using a fixture."""
-    model = create_model  # Load the model from the fixture
+    model = create_model_encode  # Load the model from the fixture
     encoder = create_encoder
     # Actual value for sample_inference_1
     actual_value = 451500000.0
@@ -78,7 +78,7 @@ def test_model_inference_1(create_model, create_encoder, sample_inference_1):
     data_df = pd.DataFrame([sample_inference_1])
     data_df = preprocess.drop_unncessary_columns(data_df, constants.COLS_TO_DROP)
     data_df = preprocess.cast_to_category(data_df, constants.CAT_COLS)
-    data_df = preprocess.encode_cat_cols(data_df, encoder, constants.CAT_COLS)
+    #data_df = preprocess.encode_cat_cols(data_df, encoder, constants.CAT_COLS)
     # Convert to DMatrix
    #dtest = preprocess.convert_data_dmatrix(df=data_df)
 
@@ -98,9 +98,9 @@ def test_model_inference_1(create_model, create_encoder, sample_inference_1):
     print(f"Test passed: Predicted value {predicted_value} is within {tolerance*100}% of the actual value {actual_value}.")
 
 
-def test_model_inference_2(create_model, create_encoder, sample_inference_2):
+def test_model_inference_2(create_model_encode, create_encoder, sample_inference_2):
     """Test model inference using a fixture."""
-    model = create_model  # Load the model from the fixture
+    model = create_model_encode  # Load the model from the fixture
     encoder = create_encoder
     # Actual value for sample_inference_1
     actual_value = 729666666.0
@@ -112,7 +112,7 @@ def test_model_inference_2(create_model, create_encoder, sample_inference_2):
     data_df = pd.DataFrame([sample_inference_2])
     data_df = preprocess.drop_unncessary_columns(data_df, constants.COLS_TO_DROP)
     data_df = preprocess.cast_to_category(data_df, constants.CAT_COLS)
-    data_df = preprocess.encode_cat_cols(data_df, encoder, constants.CAT_COLS)
+    #data_df = preprocess.encode_cat_cols(data_df, encoder, constants.CAT_COLS)
     # Convert to DMatrix
     #dtest = preprocess.convert_data_dmatrix(df=data_df)
 
@@ -131,9 +131,9 @@ def test_model_inference_2(create_model, create_encoder, sample_inference_2):
 
     print(f"Test passed: Predicted value {predicted_value} is within {tolerance*100}% of the actual value {actual_value}.")
 
-def test_model_inference_3(create_model, create_encoder, sample_inference_3):
+def test_model_inference_3(create_model_encode, create_encoder, sample_inference_3):
     """Test model inference using a fixture."""
-    model = create_model  # Load the model from the fixture
+    model = create_model_encode  # Load the model from the fixture
     encoder = create_encoder
     # Actual value for sample_inference_1
     actual_value = 222500000.0
@@ -145,7 +145,7 @@ def test_model_inference_3(create_model, create_encoder, sample_inference_3):
     data_df = pd.DataFrame([sample_inference_3])
     data_df = preprocess.drop_unncessary_columns(data_df, constants.COLS_TO_DROP)
     data_df = preprocess.cast_to_category(data_df, constants.CAT_COLS)
-    data_df = preprocess.encode_cat_cols(data_df, encoder, constants.CAT_COLS)
+    #data_df = preprocess.encode_cat_cols(data_df, encoder, constants.CAT_COLS)
 
     # Make prediction
     prediction = model.predict(data_df)
