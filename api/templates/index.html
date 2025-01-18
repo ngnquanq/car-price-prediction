@@ -132,7 +132,7 @@ async function submitForm(event) {
     data.mileage_v2 = parseInt(data.mileage_v2);
     
     try {
-        const response = await fetch('/predict', {
+        const response = await fetch('/predict_lgbm', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

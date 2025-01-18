@@ -36,7 +36,7 @@ def test_model_inference_lgbm(create_model_lgbm, request, sample_data, actual_va
     # It allows retrieving other fixtures dynamically using getfixturevalue()
     sample = request.getfixturevalue(sample_data)
     
-    # Tolerance for 10% interval
+    # Tolerance for 5% interval
     tolerance = 0.05
 
     # Preprocess the sample data
