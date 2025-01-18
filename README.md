@@ -7,9 +7,12 @@ This project is a FastAPI application for predicting car prices at vucar.
 The latest report can be found here: [link](https://docs.google.com/document/d/19Z7UBl4Te8HHzwaOXbRzGcpIlKpdOoEZ-TlovbhqSX4/edit?usp=sharing)
 
 - Fast recap:
+    - Model: LGBM (best baseline)
     - MAE: 40mil vnd
-    - R-squared: approx 91%
-    - Test case: pass 2/3 (pass if predicted value is within 10% interval of the actual value)
+    - R-squared: approx 93%
+    - Test case: pass 3/3 w fault tolerance = 5% (pass if predicted value is within 10% interval of the actual value).
+    - Monotonic constraint to avoid weird situation.
+    - Many room to improve later on (cross val with hyper tune (bayesian approach)).
 
 ## Requirements
 
@@ -44,6 +47,9 @@ If you dont have conda, use venv (built-in w/ Python)
     ```bash
     python -m pip install -r requirements.txt
     ```
+4. (Skip the above if already did it) (Crucial to run application) Weight for lgbm (101MB -> rejected by gh (file too large)).
+
+You can download the weight in the [link](https://drive.google.com/file/d/1W2J11QF6wms18m_6UUy7egOVx2XdBUPL/view?usp=sharing). Then, unzip and put it under the models/
 
 ## Running the Application
 
