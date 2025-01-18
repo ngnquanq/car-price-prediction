@@ -81,7 +81,8 @@ You can download the weight in the [link](https://drive.google.com/drive/folders
 ## Endpoints
 
 - `GET /`: Root endpoint to check if the API is running.
-- `POST /predict`: Endpoint to predict car prices. Expects a JSON payload with car features.
+- `POST /predict_*`: Endpoint to predict car prices. Expects a JSON payload with car features.
+- There is a landing page also, use that to predict faster (w/o setup instance or some).
 
 ## Test
 In order to run test code:
