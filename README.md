@@ -49,7 +49,7 @@ If you dont have conda, use venv (built-in w/ Python)
     ```
 4. (Skip the above if already did it) (Crucial to run application) Weight for lgbm (101MB -> rejected by gh (file too large)).
 
-You can download the weight in the [link](https://drive.google.com/file/d/1W2J11QF6wms18m_6UUy7egOVx2XdBUPL/view?usp=sharing). Then, unzip and put it under the models/
+You can download the weight in the [link](https://drive.google.com/drive/folders/1lFdyOt6ag9Yxbu6OaZOC0RGgT6mTThkt?usp=sharing). Then, unzip and put it under the root dir.
 
 ## Running the Application
 
