@@ -46,13 +46,13 @@ pipeline{
                     echo 'Building the docker image for deployment ... '
                     // Replace the registry with the docker image
                     echo 'Replace the registry with the docker image ... '
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    //dockerImage = docker.build registry + ":$BUILD_NUMBER"
                     //  Push the docker image to the docker hub
-                    echo 'Push the docker image to the docker hub ... '
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
-                        dockerImage.push("latest")
-                    }
+                    // echo 'Push the docker image to the docker hub ... '
+                    // docker.withRegistry( '', registryCredential ) {
+                    //     dockerImage.push()
+                    //     dockerImage.push("latest")
+                    // }
                     echo 'Building the deployment package ... '
                     // Replace the registry with the deployment package
                     echo 'Replace the registry with the deployment package ... '
