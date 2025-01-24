@@ -25,7 +25,7 @@ pipeline{
         stage('Test'){ 
             agent {
                 docker {
-                    image: 'python:3.10'
+                    image 'python:3.8'
                 }
             }
             steps {
