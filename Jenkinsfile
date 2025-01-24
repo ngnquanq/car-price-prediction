@@ -20,14 +20,14 @@ pipeline{
     }
 
     // Stages of the pipeline
-    stages{
-        agent{
+    stages {
+        agent {
             docker {
                 image: 'python:3.10'
             }
         }
         // Stage 1: test the code
-        stage('Test'){
+        stage('Test'){ 
             steps {
                 // Print somethings to the screen
                 echo  'Prepare to test the code ... '
