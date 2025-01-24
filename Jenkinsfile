@@ -32,7 +32,7 @@ pipeline{
                 // Print somethings to the screen
                 echo  'Prepare to test the code ... '
                 // install required packages
-                sh 'python -m pip install -r requirements.txt'
+                sh 'python3 -m pip install -r requirements.txt'
                 // checkout the code from the github repo to 
                 echo 'Check for model correctness w 5% fault tolerance ... '
                 // sh 'pytest tests'
