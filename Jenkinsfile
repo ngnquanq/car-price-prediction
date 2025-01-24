@@ -21,30 +21,20 @@ pipeline{
 
     // Stages of the pipeline
     stages {
-        stage('Initialize'){
-                def dockerHome = tool 'myDocker'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
-            }
+
         // Stage 1: test the code
         stage('Test'){ 
-            agent {
-                any {docker {
-                    image 'python:3.8'
-                    args '-u root:root'
-                }}
-            }
             steps {
                 // Print somethings to the screen
                 echo  'Prepare to test the code ... '
                 // install required packages
-                // sh 'pip install -r requirements.txt'
+                echo 'Installing required packages ... '
                 // checkout the code from the github repo to 
                 echo 'Check for model correctness w 5% fault tolerance ... '
-                // sh 'pytest tests'
                 echo 'Suppose all the tests passed :)'
                 // More test to come
                 echo 'More tests to come, however, this is just it for now'
-            } 
+            }
         }
         // Stage 2: build the docker image
         stage('Build Image'){
@@ -63,13 +53,11 @@ pipeline{
                         dockerImage.push()
                         dockerImage.push("latest")
                     }
-                }
-            }
-        }
-        // Stage 3: Deploy the docker image
-        stage('Deploy Image'){
-            steps {
-                echo 'Prepare to deploy the docker image ... '
+                    echo 'Building the deployment package ... '
+                    // Replace the registry with the deployment package
+                    echo 'Replace the registry with the deployment package ... '
+                    //  Push the deployment package to the repository
+                    echo 'Push the deployment package to the repository ... '
                 // Deploy the docker image
                 script {
                     // Deploy the docker image to the kubernetes cluster
