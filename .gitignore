@@ -6,4 +6,4 @@ models/*.joblib
 models/*.pkl
 models/*.model
 logs/
-
+/.terraform/
