@@ -1,30 +1,30 @@
-variable "project_id" {
+variable "resource_group_location" {
   type        = string
-  default     = ""
-  description = "The ID of the project to host the server"
+  default     = "eastus"
+  description = "Location of the resource group."
+}
+
+variable "resource_group_name_prefix" {
+  type        = string
+  default     = "rg"
+  description = "Prefix of the resource group name that's combined with a random ID so name is unique in your Azure subscription."
 }
 
 
-variable "region" {
-  type        = string
-  default     = "asia-southeast1"
-  description = "The region to host the server"
+variable "node_count" {
+  type        = number
+  description = "The initial quantity of nodes for the node pool."
+  default     = 1
 }
 
-variable "zone" {
+variable "msi_id" {
   type        = string
-  default     = "asia-southeast1-a"
-  description = "THe zone within the region to deploy the cluster"
+  description = "The Managed Service Identity ID. Set this value if you're running this example using Managed Identity as the authentication method."
+  default     = null
 }
 
-variable "service_account_email" {
+variable "username" {
   type        = string
-  default     = "nhatquangdata2011@gmail.com"
-  description = "The service account email to use for the server"
-}
-
-variable "gce_machine_type" {
-  type        = string
-  default     = "e2-micro"
-  description = "The machine type to use for the server"
+  description = "The admin username for the new cluster."
+  default     = "ngnquaq"
 }

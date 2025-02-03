@@ -6,6 +6,7 @@ models/*.joblib
 models/*.pkl
 models/*.model
 logs/
-/.terraform/
 models/
 data/processed/
+/.terraform/
+/.qodo/
