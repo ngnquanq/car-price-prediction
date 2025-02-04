@@ -1,57 +1,7 @@
-# # Azure VM and AKS resource group
-# resource "random_pet" "rg_name" {
-#   prefix = var.resource_group_name_prefix
-# }
-
-# resource "azurerm_resource_group" "rg" {
-#   location = var.resource_group_location
-#   name     = random_pet.rg_name.id
-# }
-
-# # Generate SSH key pairs for Azure VM and AKS
-# resource "random_pet" "ssh_key_name_vm" {
-#   prefix    = "vm-ssh"
-#   separator = ""
-# }
-
-# resource "random_pet" "ssh_key_name_aks" {
-#   prefix    = "aks-ssh"
-#   separator = ""
-# }
-
-# # Azure VM SSH key pair generation
-# resource "azapi_resource_action" "ssh_public_key_gen_vm" {
-#   type        = "Microsoft.Compute/sshPublicKeys@2022-11-01"
-#   resource_id = azapi_resource.ssh_public_key_vm.id
-#   action      = "generateKeyPair"
-#   method      = "POST"
-
-#   response_export_values = ["publicKey", "privateKey"]
-# }
-
-# resource "azapi_resource" "ssh_public_key_vm" {
-#   type      = "Microsoft.Compute/sshPublicKeys@2022-11-01"
-#   name      = random_pet.ssh_key_name_vm.id
-#   location  = azurerm_resource_group.rg.location
-#   parent_id = azurerm_resource_group.rg.id
-# }
-
-# # AKS SSH key pair generation
-# resource "azapi_resource_action" "ssh_public_key_gen_aks" {
-#   type        = "Microsoft.Compute/sshPublicKeys@2022-11-01"
-#   resource_id = azapi_resource.ssh_public_key_aks.id
-#   action      = "generateKeyPair"
-#   method      = "POST"
-
-#   response_export_values = ["publicKey", "privateKey"]
-# }
-
-# resource "azapi_resource" "ssh_public_key_aks" {
-#   type      = "Microsoft.Compute/sshPublicKeys@2022-11-01"
-#   name      = random_pet.ssh_key_name_aks.id
-#   location  = azurerm_resource_group.rg.location
-#   parent_id = azurerm_resource_group.rg.id
-# }
+resource "azurerm_resource_group" "rg" {
+  name     = "my-terraform-rg"
+  location = "asia-south-east"
+}
 
 # Create virtual network
 resource "azurerm_virtual_network" "my_terraform_network" {
@@ -176,9 +126,9 @@ resource "azurerm_kubernetes_cluster" "my_terraform_aks" {
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "myakscluster"
 
-  default_node_pool {
+  agent_pool_profile {
     name                = "default"
-    node_count          = 1
+    count          = 1
     vm_size             = "Standard_DS2_v2"
     os_type             = "Linux"
     enable_auto_scaling = true
@@ -205,7 +155,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "my_terraform_aks_node_pool" {
   resource_group_name = azurerm_resource_group.rg.name
   name                = "additional-node-pool"
   node_count          = 1
-  vm_size             = "Standard_DS2_v2"
+  vm_size             = "Standard_D2as_v4"
   os_type             = "Linux"
 }
 
@@ -238,13 +188,13 @@ resource "kubernetes_manifest" "aks_kubeconfig" {
 }
 
 # Outputs
-output "vm_key_data" {
-  value = azapi_resource_action.ssh_public_key_gen_vm.output.publicKey
-}
+# output "vm_key_data" {
+#   value = azapi_resource_action.ssh_public_key_gen_vm.output.publicKey
+# }
 
-output "aks_key_data" {
-  value = azapi_resource_action.ssh_public_key_gen_aks.output.publicKey
-}
+# output "aks_key_data" {
+#   value = azapi_resource_action.ssh_public_key_gen_aks.output.publicKey
+# }
 
 output "aks_cluster_name" {
   value = azurerm_kubernetes_cluster.my_terraform_aks.name
