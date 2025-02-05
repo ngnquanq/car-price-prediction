@@ -1,71 +1,72 @@
-pipeline{
-    //specifies where the pipeline or a specific stage will run
+pipeline {
     agent any
 
-    // Setup some options
-    options {
-        // Set max of log to keep and days to keep
-        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '5'))
-        // Set the timeout for the pipeline
-        timeout(time: 1, unit: 'HOURS')
-        // Enable timestamps at each job of the pipeline
-        timestamps()
-    }
-
-    // Setup environment variables
-    environment {
-        // registry w my dockerhub username
-        registry = "ngnquanq/car-price-prediction"
-        registryCredential= 'dockerhub'
-    }
-
-    // Stages of the pipeline
     stages {
-
-        // Stage 1: test the code
-        stage('Test'){ 
+        stage('Load Environment Variables') {
             steps {
-                // Print somethings to the screen
-                echo  'Prepare to test the code ... '
-                // install required packages
-                echo 'Installing required packages ... '
-                // checkout the code from the github repo to 
-                echo 'Check for model correctness w 5% fault tolerance ... '
-                echo 'Suppose all the tests passed :)'
-                // More test to come
-                echo 'More tests to come, however, this is just it for now'
+                script {
+                    // Read the .env file (assumed to be in properties file format: KEY=VALUE)
+                    def envProps = readProperties file: '.env'
+                    envProps.each { key, value ->
+                        env[key] = value
+                    }
+                    echo "Loaded environment variables: ${envProps}"
+                }
             }
         }
-        // Stage 2: build the docker image
-        stage('Build Image'){
+        stage('Checkout') {
             steps {
-                echo 'Prepare to build Image ... '
-                // Build the docker image
+                git url: 'https://github.com/your-org/your-repo.git', branch: 'main'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                // Install Python dependencies and run tests.
+                // Assumes a requirements.txt file is present and tests are located under a "tests/" directory.
+                sh '''
+                    echo "Installing Python dependencies..."
+                    python -m pip install --upgrade pip
+                    python -m pip install -r requirements.txt
+                    echo "Running pytest..."
+                    pytest test
+                '''
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh "docker build -t ${env.IMAGE_NAME}:${env.IMAGE_TAG} ."
+            }
+        }
+        stage('Tag and Push Image') {
+            steps {
                 script {
-                    // Build the docker image for deployment
-                    echo 'Building the docker image for deployment ... '
-                    // Replace the registry with the docker image
-                    echo 'Replace the registry with the docker image ... '
-                    //dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                    //  Push the docker image to the docker hub
-                    // echo 'Push the docker image to the docker hub ... '
-                    // docker.withRegistry( '', registryCredential ) {
-                    //     dockerImage.push()
-                    //     dockerImage.push("latest")
-                    // }
-                    echo 'Building the deployment package ... '
-                    // Replace the registry with the deployment package
-                    echo 'Replace the registry with the deployment package ... '
-                    //  Push the deployment package to the repository
-                    echo 'Push the deployment package to the repository ... '
-                // Deploy the docker image
-                script {
-                    // Deploy the docker image to the kubernetes cluster
-                    echo 'Deploy the models ... '
-                    echo 'Running a script to trigger pull and start a docker container'
+                    sh "docker tag ${env.IMAGE_NAME}:${env.IMAGE_TAG} ${env.REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG}"
+                    withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh "echo $PASSWORD | docker login ${env.REGISTRY} --username $USERNAME --password-stdin"
+                    }
+                    sh "docker push ${env.REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG}"
+                }
+            }
+        }
+        stage('Deploy to AKS') {
+            steps {
+                withCredentials([file(credentialsId: env.KUBE_CONFIG, variable: 'KUBECONFIG_FILE')]) {
+                    // Export the kubeconfig file so that Helm and kubectl can authenticate to AKS.
+                    sh """
+                        export KUBECONFIG=${KUBECONFIG_FILE}
+                        helm upgrade --install ${env.HELM_RELEASE} ./helm-chart/model-serving \\
+                          --namespace model-serving \\
+                          --set image.repository=${env.REGISTRY}/${env.IMAGE_NAME},image.tag=${env.IMAGE_TAG}
+                    """
                 }
             }
         }
     }
+    post {
+        failure {
+            mail to: 'devops@example.com',
+                 subject: "Jenkins Pipeline Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "Please check the Jenkins logs for details."
+        }
     }
 }

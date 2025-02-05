@@ -3,15 +3,12 @@ from urllib import response
 import catboost
 from fastapi.testclient import TestClient
 import joblib
-import pytest
 import pandas as pd 
 import lightgbm as lgb
-import xgboost as xgb
 from fastapi import FastAPI, HTTPException, Request  # Add Request here
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from regex import R
-import requests
 from api.pydantic_models import CarPriceData
 import numpy as np
 from loguru import logger
@@ -44,23 +41,12 @@ templates = Jinja2Templates(directory="api/templates")
 # Mount static files
 app.mount("/static", StaticFiles(directory="api/static"), name="static")
 
-
-# Load the encoder
-encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
-# load the model
-model = catboost.CatBoostRegressor()
-model.load_model(f"{MODEL_PATH}/catboost_model_autoencode.cbm")
-
-# Load the model xgboost
-model_xgb =  xgb.Booster(params=PARAMS)
-model_xgb.load_model(f"{MODEL_PATH}/xgb_model.json")
+# Model LGBM
+model_lgbm = lgb.Booster(model_file=f"{MODEL_PATH}/lgbm_model.joblib")
 
 @app.get("/")
 def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
-
-# Load the LGBM model
-model_lgbm = lgb.Booster(model_file=f"{MODEL_PATH}/lgbm_model.joblib")
 
 @app.post("/predict_lgbm")
 def predict_lgbm(car_data: CarPriceData):
@@ -155,29 +141,4 @@ def predict(car_data: CarPriceData):
     return float(y_pred[0])
 
 if __name__ == "__main__":
-    # The following code is for fast prototype
-    xgb_params = {
-    'objective': 'reg:squarederror', 
-    'max_depth': 20,
-    'eta': 0.5,
-    'enable_categorical': True
-    }   
-    #model = xgb.Booster(params=xgb_params, model_file=f"{MODEL_PATH}/xgb_model.json")
-    encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
-    model = catboost.CatBoostRegressor()
-    model.load_model(f"{MODEL_PATH}/catboost_model.cbm")
-    sample_data = constants.SAMPLE_DATA
-    data_df = pd.DataFrame(sample_data, index=[0])
-    data_df = data_df.drop(columns='price')
-    data_df = preprocess.drop_unncessary_columns(df=data_df, cols_to_drop=constants.COLS_TO_DROP)
-    data_df = preprocess.cast_to_category(df=data_df, cols_to_cast=constants.CAT_COLS)
-    data_df = preprocess.encode_cat_cols(df=data_df, label_encoder=encoder, cat_cols=constants.CAT_COLS)
-    #data_numpy = data_df.to_numpy()
-    # # Convert the sample input to DMatrix for prediction
-    #dtest_sample = xgb.DMatrix(data_df, enable_categorical=True, missing=np.NAN)
-
-    # Predict the price using the trained model
-    predicted_price = model.predict(data_df)
-
-    # Print the predicted price
-    print(f"Predicted price: {predicted_price[0]}")
+    pass

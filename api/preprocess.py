@@ -2,7 +2,6 @@ from os import error
 import pandas as pd
 import numpy as np
 import random
-from xgboost import DMatrix
 from typing import List, Optional
 def drop_unncessary_columns(df: pd.DataFrame, cols_to_drop: List[str]):
     """Dropping unnecessary columns from the dataframe
