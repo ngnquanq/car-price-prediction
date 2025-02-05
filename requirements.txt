@@ -15,7 +15,9 @@ regex
 tabpfn # A new architecture that has potential to outperform xgboost
 loguru==0.7.3 # For logging
 pytest==8.3.4 # For testing the code
-ansible==8.3.0
-requests==2.31.0
-google-auth==2.28.1
-locust==2.32.5 # For load testing
+# ansible==8.3.0
+# requests==2.31.0
+# google-auth==2.28.1
+# locust==2.32.5 # For load testing
+catboost 
+lightgbm

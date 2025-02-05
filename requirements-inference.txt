@@ -1,0 +1,11 @@
+fastapi[standard]>=0.112.0,<0.113.0
+scikit-learn==1.3.0
+jinja2
+numpy==1.26.4
+pandas==2.2.2
+regex
+loguru==0.7.3 # For logging
+pytest==8.3.4 # For testing the code
+lightgbm
+pydantic
+catboost
