@@ -20,14 +20,20 @@ ENV PATH="/opt/venv/bin:$PATH" \
 COPY api/ /app/api/
 COPY models/ /app/models/
 COPY requirements-inference.txt .
+COPY start.sh /app/start.sh
 
 # Install python dep
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 RUN python -m pip install --no-cache-dir -r requirements-inference.txt
 
+# Make the script executable
+RUN chmod +x /app/start.sh
+
 # Expose port
 EXPOSE 80
 
 # Run the application with Uvicorn
 CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "80"] 
+
+# docker run --network host -it --rm car-price-prediction
