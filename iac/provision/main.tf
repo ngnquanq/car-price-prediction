@@ -1,205 +1,86 @@
-resource "azurerm_resource_group" "rg" {
-  name     = "my-terraform-rg"
-  location = "southeastasia"
-}
-
-# Create virtual network
-resource "azurerm_virtual_network" "my_terraform_network" {
-  name                = "myVnet"
-  address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-}
-
-# Create subnet
-resource "azurerm_subnet" "my_terraform_subnet" {
-  name                 = "mySubnet"
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.my_terraform_network.name
-  address_prefixes     = ["10.0.1.0/24"]
-}
-
-# Create public IPs
-resource "azurerm_public_ip" "my_terraform_public_ip" {
-  name                = "myPublicIP"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  allocation_method   = "Dynamic"
-}
-
-# Create Network Security Group and rule
-resource "azurerm_network_security_group" "my_terraform_nsg" {
-  name                = "myNetworkSecurityGroup"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-
-  security_rule {
-    name                       = "SSH"
-    priority                   = 1001
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "22"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "4.17.0"
+    }
+    azapi = {
+      source = "Azure/azapi"
+      version = "~>1.5"
+    }
+    random = {
+      source = "hashicorp/random"
+      version = "~>3.0"
+    }
+    time = {
+      source  = "hashicorp/time"
+      version = "0.9.1"
+    }
   }
+  required_version = "1.10.5"
 }
 
-# Create network interface
-resource "azurerm_network_interface" "my_terraform_nic" {
-  name                = "myNIC"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-
-  ip_configuration {
-    name                          = "my_nic_configuration"
-    subnet_id                     = azurerm_subnet.my_terraform_subnet.id
-    private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.my_terraform_public_ip.id
-  }
+provider "azurerm" {
+  # Configuration options
+  features {}
 }
 
-# Connect the security group to the network interface
-resource "azurerm_network_interface_security_group_association" "example" {
-  network_interface_id      = azurerm_network_interface.my_terraform_nic.id
-  network_security_group_id = azurerm_network_security_group.my_terraform_nsg.id
-}
-
-# Generate random text for a unique storage account name
-resource "random_id" "random_id" {
-  keepers = {
-    # Generate a new ID only when a new resource group is defined
-    resource_group = azurerm_resource_group.rg.name
-  }
-
-  byte_length = 8
-}
-
-# Create storage account for boot diagnostics
-resource "azurerm_storage_account" "my_storage_account" {
-  name                     = "diag${random_id.random_id.hex}"
-  location                 = azurerm_resource_group.rg.location
-  resource_group_name      = azurerm_resource_group.rg.name
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
-
-# Create virtual machine
-resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
-  name                  = "myVM"
+resource "azurerm_linux_virtual_machine" "main" {
+  name                  = "carprice-vm"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
-  network_interface_ids = [azurerm_network_interface.my_terraform_nic.id]
-  size                  = "Standard_DS1_v2"
-
-  os_disk {
-    name                 = "myOsDisk"
-    caching              = "ReadWrite"
-    storage_account_type = "Premium_LRS"
-  }
-
-  source_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts-gen2"
-    version   = "latest"
-  }
-
-  computer_name  = "hostname"
-  admin_username = var.username
+  size                  = "Standard_B2s"
+  admin_username        = var.username
+  network_interface_ids = [azurerm_network_interface.main.id]
 
   admin_ssh_key {
     username   = var.username
     public_key = azapi_resource_action.ssh_public_key_gen_vm.output.publicKey
   }
 
-  boot_diagnostics {
-    storage_account_uri = azurerm_storage_account.my_storage_account.primary_blob_endpoint
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
   }
 }
 
-# Create Azure Kubernetes Service (AKS) cluster
-resource "azurerm_kubernetes_cluster" "my_terraform_aks" {
-  name                = "myAKSCluster"
+resource "azurerm_kubernetes_cluster" "aks" {
+  name                = "carprice-aks"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  dns_prefix          = "myakscluster"
+  dns_prefix          = "carpriceaks"
+  kubernetes_version  = "1.26"
 
-  agent_pool_profile {
-    name                = "default"
-    count          = 1
-    vm_size             = "Standard_DS2_v2"
-    os_type             = "Linux"
-    enable_auto_scaling = true
-    min_count           = 1
-    max_count           = 3
+  default_node_pool {
+    name       = "default"
+    node_count = var.node_count
+    vm_size    = "Standard_DS2_v2"
   }
 
   identity {
     type = "SystemAssigned"
   }
 
+  linux_profile {
+    admin_username = var.username
+
+    ssh_key {
+      key_data = azapi_resource_action.ssh_public_key_gen_aks.output.publicKey
+    }
+  }
+
   network_profile {
     network_plugin = "azure"
+    network_policy = "azure"
+    service_cidr   = "10.0.0.0/16"
+    dns_service_ip = "10.0.0.10"
+    load_balancer_sku = "standard"
   }
-
-  tags = {
-    environment = "development"
-  }
-}
-
-# Create AKS node pool
-resource "azurerm_kubernetes_cluster_node_pool" "my_terraform_aks_node_pool" {
-  cluster_name       = azurerm_kubernetes_cluster.my_terraform_aks.name
-  resource_group_name = azurerm_resource_group.rg.name
-  name                = "additional-node-pool"
-  node_count          = 1
-  vm_size             = "Standard_D2as_v4"
-  os_type             = "Linux"
-}
-
-# Create Kubernetes configuration
-resource "kubernetes_manifest" "aks_kubeconfig" {
-  manifest = {
-    apiVersion = "v1"
-    clusters = [{
-      name = azurerm_kubernetes_cluster.my_terraform_aks.name
-      cluster = {
-        certificate-authority-data = azurerm_kubernetes_cluster.my_terraform_aks.kube_config.0.cluster_ca_certificate
-        server = azurerm_kubernetes_cluster.my_terraform_aks.kube_config.0.cluster_server
-      }
-    }]
-    contexts = [{
-      name = azurerm_kubernetes_cluster.my_terraform_aks.name
-      context = {
-        cluster = azurerm_kubernetes_cluster.my_terraform_aks.name
-        user = "clusterUser_${azurerm_kubernetes_cluster.my_terraform_aks.name}"
-      }
-    }]
-    current-context = azurerm_kubernetes_cluster.my_terraform_aks.name
-    users = [{
-      name = "clusterUser_${azurerm_kubernetes_cluster.my_terraform_aks.name}"
-      user = {
-        token = azurerm_kubernetes_cluster.my_terraform_aks.kube_config.0.user_token
-      }
-    }]
-  }
-}
-
-# Outputs
-# output "vm_key_data" {
-#   value = azapi_resource_action.ssh_public_key_gen_vm.output.publicKey
-# }
-
-# output "aks_key_data" {
-#   value = azapi_resource_action.ssh_public_key_gen_aks.output.publicKey
-# }
-
-output "aks_cluster_name" {
-  value = azurerm_kubernetes_cluster.my_terraform_aks.name
-}
-
-output "aks_kubeconfig" {
-  value = kubernetes_manifest.aks_kubeconfig.manifest
 }
