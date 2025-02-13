@@ -1,72 +1,116 @@
 pipeline {
     agent any
-
+    environment {
+        REGISTRY = "carpredictionregistry.azurecr.io"
+        IMAGE_NAME = "car-price-prediction"
+        KUBE_CONFIG = "aks-kubeconfig" // Matches credentials ID from Jenkins
+        HELM_CHART_PATH = "./k8s-resources" // From your codebase
+        MONITORING_NAMESPACE = "monitoring"
+    }
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
     stages {
-        stage('Load Environment Variables') {
+        stage('Build Image') {
             steps {
                 script {
-                    // Read the .env file (assumed to be in properties file format: KEY=VALUE)
-                    def envProps = readProperties file: '.env'
-                    envProps.each { key, value ->
-                        env[key] = value
-                    }
-                    echo "Loaded environment variables: ${envProps}"
+                    docker.build("${env.REGISTRY}/${env.IMAGE_NAME}:${env.BUILD_TAG}")
                 }
             }
         }
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/your-org/your-repo.git', branch: 'main'
-            }
-        }
+        
         stage('Run Tests') {
             steps {
-                // Install Python dependencies and run tests.
-                // Assumes a requirements.txt file is present and tests are located under a "tests/" directory.
-                sh '''
-                    echo "Installing Python dependencies..."
-                    python -m pip install --upgrade pip
-                    python -m pip install -r requirements.txt
-                    echo "Running pytest..."
-                    pytest test
-                '''
-            }
-        }
-        stage('Build Docker Image') {
-            steps {
-                sh "docker build -t ${env.IMAGE_NAME}:${env.IMAGE_TAG} ."
-            }
-        }
-        stage('Tag and Push Image') {
-            steps {
                 script {
-                    sh "docker tag ${env.IMAGE_NAME}:${env.IMAGE_TAG} ${env.REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG}"
-                    withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh "echo $PASSWORD | docker login ${env.REGISTRY} --username $USERNAME --password-stdin"
+                    docker.image("${env.REGISTRY}/${env.IMAGE_NAME}:${env.BUILD_TAG}").inside {
+                        sh 'pytest tests/' // Using pytest from your custom Dockerfile
                     }
-                    sh "docker push ${env.REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG}"
                 }
             }
         }
+        
+        stage('Push to ACR') {
+            steps {
+                script {
+                    docker.withRegistry("https://${env.REGISTRY}", 'acr-credentials') {
+                        docker.image("${env.REGISTRY}/${env.IMAGE_NAME}:${env.BUILD_TAG}").push()
+                    }
+                }
+            }
+        }
+        
         stage('Deploy to AKS') {
             steps {
                 withCredentials([file(credentialsId: env.KUBE_CONFIG, variable: 'KUBECONFIG_FILE')]) {
-                    // Export the kubeconfig file so that Helm and kubectl can authenticate to AKS.
+                    script {
+                        sh """
+                        export KUBECONFIG=${KUBE_CONFIG_FILE}
+                        helm upgrade --install carprice-app ${env.HELM_CHART_PATH} \
+                            --namespace production \
+                            --set image.repository=${env.REGISTRY}/${env.IMAGE_NAME} \
+                            --set image.tag=${env.BUILD_TAG} \
+                            --set autoscaling.enabled=true \
+                            --wait --timeout 5m
+                        """
+                    }
+                }
+            }
+        }
+        
+        stage('Update Monitoring') {
+            steps {
+                withCredentials([file(credentialsId: env.KUBE_CONFIG, variable: 'KUBECONFIG_FILE')]) {
                     sh """
-                        export KUBECONFIG=${KUBECONFIG_FILE}
-                        helm upgrade --install ${env.HELM_RELEASE} ./helm-chart/model-serving \\
-                          --namespace model-serving \\
-                          --set image.repository=${env.REGISTRY}/${env.IMAGE_NAME},image.tag=${env.IMAGE_TAG}
+                    export KUBECONFIG=${KUBE_CONFIG_FILE}
+                    # Add new deployment to monitoring targets
+                    kubectl label svc carprice-app -n production monitoring=enabled
+                    # Restart monitoring pods to pick up changes
+                    kubectl rollout restart deployment -n ${env.MONITORING_NAMESPACE}
                     """
+                }
+            }
+        }
+        
+        stage('Rollback Check') {
+            steps {
+                script {
+                    timeout(time: 5, unit: 'MINUTES') {
+                        input message: 'Verify deployment success. Rollback if needed?', 
+                              ok: 'Deployment Successful'
+                    }
                 }
             }
         }
     }
     post {
+        always {
+            cleanWs()
+            script {
+                docker.image("${env.REGISTRY}/${env.IMAGE_NAME}:${env.BUILD_TAG}").prune()
+            }
+        }
         failure {
-            mail to: 'devops@example.com',
-                 subject: "Jenkins Pipeline Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: "Please check the Jenkins logs for details."
+            emailext (
+                subject: "🚨 Pipeline Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """Check failed pipeline: ${env.BUILD_URL}
+                
+                Error Details:
+                ${currentBuild.currentResult}: ${currentBuild.currentBuild.result}
+                
+                Last 50 lines of log:
+                ${currentBuild.rawBuild.getLog(50).join('\n')}
+                """,
+                to: 'devops@example.com'
+            )
+            
+            // Automatic rollback on failure
+            withCredentials([file(credentialsId: env.KUBE_CONFIG, variable: 'KUBECONFIG_FILE')]) {
+                sh """
+                export KUBECONFIG=${KUBE_CONFIG_FILE}
+                helm rollback carprice-app 0 -n production
+                """
+            }
         }
     }
 }

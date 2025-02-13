@@ -4,6 +4,13 @@ variable "resource_group_location" {
   description = "Location of the resource group."
 }
 
+variable "resource_group_name" {
+  type        = string
+  description = "The name of the resource group."
+  default     = "carprice-rg"
+}
+
+
 variable "resource_group_name_prefix" {
   type        = string
   default     = "rg"
@@ -13,11 +20,13 @@ variable "resource_group_name_prefix" {
 variable "subscription_id" {
   type        = string
   description = "The Azure subscription ID."
+  default     = ""
 }
 
 variable "tenant_id" {
   type        = string
-  description = "The Azure tenant ID."
+  description = "The Azure tenant ID."  
+  default     = ""
 }
 
 variable "node_count" {

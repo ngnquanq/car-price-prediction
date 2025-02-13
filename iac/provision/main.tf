@@ -20,9 +20,42 @@ terraform {
   required_version = "1.10.5"
 }
 
+# Update your provider block (lines 23-25)
 provider "azurerm" {
-  # Configuration options
   features {}
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
+}
+
+# Add this before the VM resource (before line 28)
+resource "azurerm_virtual_network" "main" {
+  name                = "carprice-vnet"
+  address_space       = ["10.1.0.0/16"]
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_subnet" "main" {
+  name                 = "carprice-subnet"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.main.name
+  address_prefixes     = ["10.1.1.0/24"]
+}
+
+resource "azurerm_network_interface" "main" {
+  name                = "carprice-nic"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.main.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+resource "azurerm_resource_group" "rg" {
+  name     = var.resource_group_name
+  location = var.resource_group_location
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
@@ -56,7 +89,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "carpriceaks"
-  kubernetes_version  = "1.26"
+  kubernetes_version  = "1.30.2"
 
   default_node_pool {
     name       = "default"
