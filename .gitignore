@@ -9,4 +9,4 @@ logs/
 models/
 data/processed/
 /.terraform/
-/.qodo/
+.qodo/
