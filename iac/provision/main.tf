@@ -53,6 +53,7 @@ resource "azurerm_network_interface" "main" {
     private_ip_address_allocation = "Dynamic"
   }
 }
+
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.resource_group_location
@@ -68,8 +69,8 @@ resource "azurerm_linux_virtual_machine" "main" {
 
   admin_ssh_key {
     username   = var.username
-    public_key = azapi_resource_action.ssh_public_key_gen_vm.output.publicKey
-  }
+    public_key = file("~/.ssh/carprice_ssh.pub")
+    }
 
   os_disk {
     caching              = "ReadWrite"
@@ -105,7 +106,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     admin_username = var.username
 
     ssh_key {
-      key_data = azapi_resource_action.ssh_public_key_gen_aks.output.publicKey
+      key_data = file("~/.ssh/carprice_ssh.pub")
     }
   }
 
@@ -117,3 +118,40 @@ resource "azurerm_kubernetes_cluster" "aks" {
     load_balancer_sku = "standard"
   }
 }
+
+# Add this security rule to your NSG configuration
+resource "azurerm_network_security_group" "main" {
+    name                = "carprice-nsg"
+    location            = azurerm_resource_group.rg.location
+    resource_group_name = azurerm_resource_group.rg.name
+
+    security_rule {
+        name                       = "SSH"
+        priority                   = 100
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "22"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
+
+    # New ICMP rule
+    security_rule {
+        name                       = "AllowICMP"
+        priority                   = 110  # Must be higher than SSH rule
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Icmp"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
+}
+
+    resource "azurerm_subnet_network_security_group_association" "main" {
+      subnet_id                 = azurerm_subnet.main.id
+      network_security_group_id = azurerm_network_security_group.main.id
+    }

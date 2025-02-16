@@ -1,3 +1,5 @@
 .terraform/
 .qodo/
 terraform.tfvars
+*.txt
+.terraform.lock.hcl

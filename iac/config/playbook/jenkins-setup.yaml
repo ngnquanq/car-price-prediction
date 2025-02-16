@@ -1,0 +1,140 @@
+- name: Deploy Jenkins
+  hosts: azure-vm
+  become: yes
+  vars:
+    default_container_name: jenkins
+    helm_version: "3.14.2"  # Added Helm version variable
+    python_version: "3.10"   # Specific Python version
+
+  tasks:
+    # Existing system setup tasks
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    # Updated Python installation
+    - name: Install Python and development tools
+      apt:
+        name:
+          - python{{ python_version }}
+          - python{{ python_version }}-dev
+          - python3-pip
+          - python3-venv
+          - python3-setuptools
+          - build-essential
+          - libssl-dev
+          - libffi-dev
+        state: present
+
+    # New: Install pytest and Python Docker SDK
+    - name: Install Python packages
+      pip:
+        name:
+          - pytest
+          - docker
+          - requests
+        executable: pip3
+
+    # Existing Docker setup
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu jammy stable  # Updated to jammy
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+
+    - name: Force reinstall requests
+      pip:
+        name: requests==2.31.0
+        executable: pip3
+        state: forcereinstall
+      tags: [python-deps]
+
+    # New: Helm installation
+    - name: Download Helm
+      get_url:
+        url: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+        dest: /tmp/helm.tar.gz
+        mode: 0755
+
+    - name: Create extraction directory
+      file:
+        path: /tmp/helm-extract
+        state: directory
+
+    - name: Extract Helm
+      unarchive:
+        src: /tmp/helm.tar.gz
+        dest: /tmp/helm-extract
+        remote_src: yes
+        extra_opts: "--strip-components=1"  # Removes top-level directory
+      register: helm_extract
+
+    - name: Debug extraction path
+      debug:
+        var: helm_extract.dest
+
+    - name: Find Helm binary
+      find:
+        paths: /tmp/helm-extract
+        patterns: "helm"
+        file_type: file
+      register: helm_binary
+
+    - name: Install Helm
+      copy:
+        src: "{{ helm_binary.files[0].path }}"
+        dest: "/usr/local/bin/helm"
+        mode: 0755
+        remote_src: yes
+
+
+
+- name: Deploy from ACR
+  hosts: azure-vm
+  become: yes
+  vars:
+    #acr_registry: "carpredictionregistry.azurecr.io"
+    image_name: "jenkins-vm"
+    image_tag: "v1"
+    # azure_sp_id: "carpredictionregistry"
+    # azure_sp_secret: "carpredictionregistry"
+  vars_files:
+    - ../secrets/acr.yml
+
+  tasks:
+    - name: Login to ACR using inventory variables
+      community.docker.docker_login:
+        registry_url: "{{ env_vars.ACR_REGISTRY }}"
+        username: "{{ env_vars.AZURE_CLIENT_ID }}"
+        password: "{{ env_vars.AZURE_SECRET }}"
+      no_log: false  # Hide credentials in logs
+
+    - name: Pull image from ACR
+      community.docker.docker_image:
+        name: "{{ env_vars.ACR_REGISTRY }}/{{ image_name }}:{{ image_tag }}"
+        source: pull
+        force_source: yes
+
+    - name: Create container from ACR image
+      community.docker.docker_container:
+        name: jenkins
+        image: "{{ env_vars.ACR_REGISTRY }}/{{ image_name }}:{{ image_tag }}"
+        state: started
+        volumes:
+          - jenkins_home:/var/jenkins_home
+          - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+          - "8080:8080"
+          - "50000:50000"

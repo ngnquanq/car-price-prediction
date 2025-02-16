@@ -1,0 +1,2 @@
+[azure-vm]
+52.163.63.61 ansible_user=ngnquaq ansible_ssh_private_key_file=~/.ssh/carprice_ssh

@@ -1,7 +1,7 @@
 # HEAD FIRST !
 
 A lot of things need to do be done before can create aks cluster. 
-
+az config set extension.dynamic_install_allow_preview=true
 Notice that only LoadBalancer can be use for building 
 
 1. Login azure and azure container registry. 
