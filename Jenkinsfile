@@ -1,116 +1,107 @@
 pipeline {
     agent any
+
     environment {
-        REGISTRY = "carpredictionregistry.azurecr.io"
-        IMAGE_NAME = "car-price-prediction"
-        KUBE_CONFIG = "aks-kubeconfig" // Matches credentials ID from Jenkins
-        HELM_CHART_PATH = "./k8s-resources" // From your codebase
-        MONITORING_NAMESPACE = "monitoring"
+        ACR_REGISTRY = "carpredictionregistry.azurecr.io"  // Replace with your ACR name
+        IMAGE_NAME = "${ACR_REGISTRY}/car-price-prediction"
+        TAG = "latest"
+        acrCredential = credentials('azure-acr-credential')  // Jenkins credential ID for ACR
     }
-    options {
-        timeout(time: 30, unit: 'MINUTES')
-        buildDiscarder(logRotator(numToKeepStr: '5'))
-    }
+
     stages {
-        stage('Build Image') {
+        stage('Validate environment') {
             steps {
                 script {
-                    docker.build("${env.REGISTRY}/${env.IMAGE_NAME}:${env.BUILD_TAG}")
+                    // Check Docker installation
+                    sh(script: 'docker --version', label: 'Check Docker') 
+                    
+                    // Check Python installation
+                    sh(script: 'python3 --version', label: 'Check Python')
+                    
+                    // Optional: Verify Azure CLI
+                    sh(script: 'az --version', label: 'Check Azure CLI')
+                    
+                    // Verify Jenkins user permissions
+                    sh(script: 'docker ps', label: 'Check Docker Access')
                 }
             }
-        }
-        
-        stage('Run Tests') {
+    }
+
+    stages {
+        stage('Build Docker Image') {
+            agent {
+                docker {
+                    image 'docker:latest'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
                 script {
-                    docker.image("${env.REGISTRY}/${env.IMAGE_NAME}:${env.BUILD_TAG}").inside {
-                        sh 'pytest tests/' // Using pytest from your custom Dockerfile
+                    docker.withRegistry("https://${ACR_REGISTRY}", acrCredential) {
+                        dockerImage = docker.build("${IMAGE_NAME}:${TAG}", "--build-arg ENV=prod .")
                     }
                 }
             }
         }
-        
+
         stage('Push to ACR') {
             steps {
                 script {
-                    docker.withRegistry("https://${env.REGISTRY}", 'acr-credentials') {
-                        docker.image("${env.REGISTRY}/${env.IMAGE_NAME}:${env.BUILD_TAG}").push()
+                    docker.withRegistry("https://${ACR_REGISTRY}", acrCredential) {
+                        dockerImage.push("${TAG}")
                     }
                 }
             }
         }
-        
-        stage('Deploy to AKS') {
+
+        stage('Run Tests') {
+            agent {
+                docker {
+                    image "${IMAGE_NAME}:${TAG}"
+                    reuseNode true
+                }
+            }
             steps {
-                withCredentials([file(credentialsId: env.KUBE_CONFIG, variable: 'KUBECONFIG_FILE')]) {
-                    script {
+                sh 'pytest tests/ --cov=app --cov-report=xml'  // Update path to your tests
+            }
+        }
+
+        stage('Deploy with Helm') {
+            agent {
+                kubernetes {
+                    containerTemplate {
+                        name 'helm'
+                        image "${IMAGE_NAME}:${TAG}"  // Use the built image
+                        alwaysPullImage true
+                    }
+                }
+            }
+            steps {
+                script {
+                    container('helm') {
+                        // Update Helm chart with new image tag
                         sh """
-                        export KUBECONFIG=${KUBE_CONFIG_FILE}
-                        helm upgrade --install carprice-app ${env.HELM_CHART_PATH} \
-                            --namespace production \
-                            --set image.repository=${env.REGISTRY}/${env.IMAGE_NAME} \
-                            --set image.tag=${env.BUILD_TAG} \
-                            --set autoscaling.enabled=true \
-                            --wait --timeout 5m
+                        helm upgrade --install hpp ./helm-charts/hpp \
+                            --namespace model-serving \
+                            --set image.repository=${IMAGE_NAME} \
+                            --set image.tag=${TAG}
                         """
                     }
                 }
             }
         }
-        
-        stage('Update Monitoring') {
-            steps {
-                withCredentials([file(credentialsId: env.KUBE_CONFIG, variable: 'KUBECONFIG_FILE')]) {
-                    sh """
-                    export KUBECONFIG=${KUBE_CONFIG_FILE}
-                    # Add new deployment to monitoring targets
-                    kubectl label svc carprice-app -n production monitoring=enabled
-                    # Restart monitoring pods to pick up changes
-                    kubectl rollout restart deployment -n ${env.MONITORING_NAMESPACE}
-                    """
-                }
-            }
-        }
-        
-        stage('Rollback Check') {
-            steps {
-                script {
-                    timeout(time: 5, unit: 'MINUTES') {
-                        input message: 'Verify deployment success. Rollback if needed?', 
-                              ok: 'Deployment Successful'
-                    }
-                }
-            }
-        }
     }
+
     post {
         always {
-            cleanWs()
-            script {
-                docker.image("${env.REGISTRY}/${env.IMAGE_NAME}:${env.BUILD_TAG}").prune()
-            }
+            // Cleanup and notifications
+            deleteDir()
+        }
+        success {
+            slackSend(color: "good", message: "Deployment succeeded: ${BUILD_URL}")
         }
         failure {
-            emailext (
-                subject: "🚨 Pipeline Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """Check failed pipeline: ${env.BUILD_URL}
-                
-                Error Details:
-                ${currentBuild.currentResult}: ${currentBuild.currentBuild.result}
-                
-                Last 50 lines of log:
-                ${currentBuild.rawBuild.getLog(50).join('\n')}
-                """,
-                to: 'devops@example.com'
-            )
-            
-            // Automatic rollback on failure
-            withCredentials([file(credentialsId: env.KUBE_CONFIG, variable: 'KUBECONFIG_FILE')]) {
-                sh """
-                export KUBECONFIG=${KUBE_CONFIG_FILE}
-                helm rollback carprice-app 0 -n production
-                """
-            }
+            slackSend(color: "danger", message: "Deployment failed: ${BUILD_URL}")
         }
     }
 }
