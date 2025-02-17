@@ -13,7 +13,8 @@ pipeline {
             steps {
                 sh 'docker --version'
                 sh 'python3 --version'
-                sh 'sudo docker ps'  // Verify Docker access
+                echo 'Docker and Python are installed'
+                sh 'docker ps'  // Verify Docker access
             }
         }
     }
