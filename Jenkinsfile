@@ -25,9 +25,9 @@ pipeline {
                     sh(script: 'docker ps', label: 'Check Docker Access')
                 }
             }
-    }
+        }
+    
 
-    stages {
         stage('Build Docker Image') {
             agent {
                 docker {
