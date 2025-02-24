@@ -8,7 +8,7 @@ loguru==0.7.3 # For logging
 pytest==8.3.4 # For testing the code
 lightgbm
 pydantic
-catboostopentelemetry-api
+# catboostopentelemetry-api
 opentelemetry-sdk
 opentelemetry-instrumentation-fastapi
 opentelemetry-exporter-prometheus
