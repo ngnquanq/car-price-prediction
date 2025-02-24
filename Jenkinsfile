@@ -39,7 +39,7 @@ pipeline {
         stage('Run Pytest') {
             steps {
                 script {
-                    def result = sh(script: "../venv/bin/pytest --maxfail=1 --disable-warnings -q", returnStatus: true)
+                    def result = sh(script: "source ../venv/bin/activate && pytest --maxfail=1 --disable-warnings -q", returnStatus: true)
                     if(result != 0) {
                         error("Tests failed with exit code: ${result}")
                     }
