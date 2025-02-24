@@ -38,15 +38,12 @@ pipeline {
 
         stage('Run Pytest') {
             steps {
-                script {
-                    def result = sh(script: "source ../venv/bin/activate && pytest --maxfail=1 --disable-warnings -q", returnStatus: true)
-                    if(result != 0) {
-                        error("Tests failed with exit code: ${result}")
-                    }
+                dir('test') {
+                    sh "../venv/bin/pytest --maxfail=1 --disable-warnings -q"
                 }
-                echo 'Run Pytest successfully!'
             }
         }
+
 
 
         // stage('Checkpoint 1') {
