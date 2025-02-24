@@ -21,17 +21,25 @@ pipeline {
     stages {
         stage('Install Python Dependencies') {
             steps {
-                sh "python3 -m pip install -r requirements.txt"
+                // Create a virtual environment called 'venv'
+                sh "python3 -m venv venv"
+                
+                // Upgrade pip in the virtual environment
+                sh "./venv/bin/pip install --upgrade pip"
+                
+                // Install the requirements using the virtual environment's pip
+                sh "./venv/bin/pip install -r requirements.txt"
             }
         }
 
         stage('Run Pytest') {
             steps {
                 dir('test') {
-                    sh "pytest --maxfail=1 --disable-warnings -q"
+                    sh "../venv/bin/pytest --maxfail=1 --disable-warnings -q"
                 }
             }
         }
+
         stage('Checkpoint 1') {
             steps {
                 echo 'Run Pytest successfully, now login to Azure'
