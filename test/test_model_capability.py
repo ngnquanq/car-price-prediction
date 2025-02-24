@@ -13,10 +13,9 @@ import pytest
 
 # Add the root directory to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from api.main import predict 
+from api.main import predict_lgbm 
 from api.main import app
 from api import constants, preprocess
-import xgboost as xgb
 
 
 client = TestClient(app)

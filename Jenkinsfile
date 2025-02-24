@@ -28,23 +28,32 @@ pipeline {
                 sh "./venv/bin/pip install --upgrade pip"
                 
                 // Install the requirements using the virtual environment's pip
-                sh "./venv/bin/pip install -r requirements.txt"
+                sh "./venv/bin/pip install -r requirements-inference.txt"
+
+                // Checkpoint 
+                echo 'Install Python Dependencies successfully!'
+
             }
         }
 
         stage('Run Pytest') {
             steps {
-                dir('test') {
-                    sh "../venv/bin/pytest --maxfail=1 --disable-warnings -q"
+                script {
+                    def result = sh(script: "../venv/bin/pytest --maxfail=1 --disable-warnings -q", returnStatus: true)
+                    if(result != 0) {
+                        error("Tests failed with exit code: ${result}")
+                    }
                 }
+                echo 'Run Pytest successfully!'
             }
         }
 
-        stage('Checkpoint 1') {
-            steps {
-                echo 'Run Pytest successfully, now login to Azure'
-            }
-        }
+
+        // stage('Checkpoint 1') {
+        //     steps {
+        //         echo 'Run Pytest successfully, now login to Azure'
+        //     }
+        // }
         stage('Login to Azure') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "${AZURE_CRED_ID}", usernameVariable: 'AZURE_CLIENT_ID', passwordVariable: 'AZURE_CLIENT_SECRET')]) {
@@ -110,7 +119,7 @@ pipeline {
     post {
         always {
             // Clean up local Docker image to free up space
-            sh "docker rmi $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG || true"
+            sh "sudo docker rmi $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG || true"
         }
     }
 }

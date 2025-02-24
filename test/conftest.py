@@ -1,42 +1,39 @@
 import pandas as pd
-import xgboost as xgb
 import lightgbm as lgb
 import pytest
 import random
 import pandas as pd
-import pytest
 import random
 import joblib
-import catboost
 from api.constants import CAT_COLS, COLS_TO_DROP
 from api.preprocess import convert_data_dmatrix, drop_unncessary_columns, cast_to_category, encode_cat_cols
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from api.main import PARAMS, MODEL_PATH
+from api.main import MODEL_PATH
 
-@pytest.fixture()
-def create_model_xgboost():
-    model = catboost.CatBoostRegressor()
-    model.load_model(f"{MODEL_PATH}/catboost_model.cbm")
-    return model
+# @pytest.fixture()
+# def create_model_xgboost():
+#     model = catboost.CatBoostRegressor()
+#     model.load_model(f"{MODEL_PATH}/catboost_model.cbm")
+#     return model
 
 
-@pytest.fixture()
-def create_model_catboost():
-    model = catboost.CatBoostRegressor()
-    model.load_model(f"{MODEL_PATH}/catboost_model_autoencode.cbm")
-    return model
+# @pytest.fixture()
+# def create_model_catboost():
+#     model = catboost.CatBoostRegressor()
+#     model.load_model(f"{MODEL_PATH}/catboost_model_autoencode.cbm")
+#     return model
 
 @pytest.fixture()
 def create_model_lgbm():
     model = lgb.Booster(model_file=f"{MODEL_PATH}/lgbm_model.joblib")
     return model
 
-@pytest.fixture()
-def create_encoder():
-    encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
-    return encoder
+# @pytest.fixture()
+# def create_encoder():
+#     encoder = joblib.load(f"{MODEL_PATH}/label_encoders.joblib")
+#     return encoder
 
 @pytest.fixture()
 def sample_inference_1():
