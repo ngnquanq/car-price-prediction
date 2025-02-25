@@ -8,10 +8,8 @@ pipeline {
         IMAGE_TAG          = "latest"                           // or a dynamic tag like "${env.BUILD_NUMBER}"
         
         AZURE_CRED_ID      = "azure-sp-credentials"             // Jenkins credentials for Azure (Service Principal)
-        AKS_RESOURCE_GROUP = "myResourceGroup"
-        AKS_CLUSTER_NAME   = "myAksCluster"
-        HELM_RELEASE_NAME  = "car-price-prediction"
-        HELM_CHART_PATH    = "./helm/car-price-prediction"      // Path to your Helm chart in the repo
+        HELM_RELEASE_NAME  = "application"
+        HELM_CHART_PATH    = "./helm/application"      // Path to your Helm chart in the repo
         
         // Optionally set tenant and subscription as environment variables
         // AZURE_TENANT_ID    = "your-tenant-id"
@@ -99,7 +97,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Set Azure Subscription') {
             steps {
                 withCredentials([string(credentialsId: 'azure-subscription', variable: 'AZURE_SUBSCRIPTION')]) {
@@ -117,11 +115,13 @@ pipeline {
                     echo(message: 'Get kubectl from Azure')
                     // Deploy with Helm. The image.pullPolicy is set to 'Always' to ensure the latest image is pulled.
                     sh """
-                    helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_PATH \
-                        --set image.repository=$DOCKER_REGISTRY/$IMAGE_NAME \
-                        --set image.tag=$IMAGE_TAG \
-                        --set image.pullPolicy=Always
+                    helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_PATH --namespace model-serving -f $HELM_CHART_PATH/values.yaml 
                     """
+                    echo(message: 'Deployed to AKS successfully! Now deploy the Ingress Controller')
+                    sh """
+                    helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --set controller.admissionWebhooks.enabled=false
+                    """
+                    
                 }
             }
         }
