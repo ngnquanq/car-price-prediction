@@ -151,7 +151,7 @@ pipeline {
 
                     // Check for an external IP on the ingress-nginx-controller service in namespace "ingress-nginx"
                     def ingressIP = sh(
-                        script: "kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || echo ''",
+                        script: "kubectl get svc ingress-nginx-controller -n model-serving -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || echo ''",
                         returnStdout: true
                     ).trim()
                     echo "Ingress external IP: ${ingressIP}"
