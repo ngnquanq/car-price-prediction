@@ -38,7 +38,8 @@ pipeline {
 
         stage('Run Pytest') {
             steps {
-                sh "bash -c 'source ./venv/bin/activate && python create_model.py && pytest --maxfail=1 --disable-warnings -q'"
+                // should be sh "bash -c 'source ./venv/bin/activate && python create_model.py && pytest --maxfail=1 --disable-warnings -q'" during first time
+                sh "bash -c 'source ./venv/bin/activate && pytest --maxfail=1 --disable-warnings -q'"
             }
         }
 
@@ -62,9 +63,14 @@ pipeline {
 
         stage('Sign in to ACR') {
             steps {
-                sh "az acr login --name ${DOCKER_REGISTRY.split('\\.')[0]}"
+                withCredentials([usernamePassword(credentialsId: 'azure-acr', 
+                                                usernameVariable: 'ACR_USERNAME', 
+                                                passwordVariable: 'ACR_PASSWORD')]) {
+                    sh "docker login ${DOCKER_REGISTRY} -u ${ACR_USERNAME} -p ${ACR_PASSWORD}"
+                }
             }
         }
+
 
         stage('Build Docker Image') {
             steps {
@@ -78,10 +84,10 @@ pipeline {
             steps {
                 script {
                     // Login to ACR using the registry name extracted from the full registry URL.
-                    sh """
-                    az acr login --name ${DOCKER_REGISTRY.split('\\.')[0]}
-                    docker push $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG
-                    """
+                    
+                    sh "az acr login --name ${DOCKER_REGISTRY.split('\\.')[0]}"
+                    sh "docker push $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG"
+                    
                 }
             }
         }
