@@ -66,8 +66,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'azure-acr', 
                                                 usernameVariable: 'ACR_USERNAME', 
                                                 passwordVariable: 'ACR_PASSWORD')]) {
-                    //sh "docker login ${DOCKER_REGISTRY} -u ${ACR_USERNAME} -p ${ACR_PASSWORD}"
-                    sh "az acr login --name carpredictionregistry --resource-group carPricePrediction"
+                    sh "docker login ${DOCKER_REGISTRY} -u ${ACR_USERNAME} -p ${ACR_PASSWORD}"
+                    //sh "az acr login --name carpredictionregistry --resource-group carPricePrediction"
                 }
             }
         }
