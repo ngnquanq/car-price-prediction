@@ -99,11 +99,20 @@ pipeline {
                 }
             }
         }
+        
+        stage('Set Azure Subscription') {
+            steps {
+                withCredentials([string(credentialsId: 'azure-subscription', variable: 'AZURE_SUBSCRIPTION')]) {
+                    sh "az account set --subscription $AZURE_SUBSCRIPTION"
+                }
+            }
+        }
+
 
         stage('Deploy to AKS via Helm') {
             steps {
                 script {
-                    // Fetch AKS credentials (updates kubeconfig)
+                    // Fetch AKS credentials (updates kubeconfig)"
                     sh "az aks get-credentials --resource-group carprice-aks-rg --name carprice-aks --overwrite-existing"
                     echo(message: 'Get kubectl from Azure')
                     // Deploy with Helm. The image.pullPolicy is set to 'Always' to ensure the latest image is pulled.
