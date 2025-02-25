@@ -66,7 +66,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'azure-acr', 
                                                 usernameVariable: 'ACR_USERNAME', 
                                                 passwordVariable: 'ACR_PASSWORD')]) {
-                    sh "docker login ${DOCKER_REGISTRY} -u ${ACR_USERNAME} -p ${ACR_PASSWORD}"
+                    sh "docker login ${DOCKER_REGISTRY} -u ${ACR_USERNAME} --password-stdin"
                     //sh "az acr login --name carpredictionregistry --resource-group carPricePrediction"
                 }
             }
@@ -76,7 +76,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -t $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG ."
+                    sh "sudo docker build -t $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG ."
                 }
             }
         }
@@ -86,7 +86,7 @@ pipeline {
                 script {
                     // Login to ACR using the registry name extracted from the full registry URL.
                     
-                    sh "docker push $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG"
+                    sh "sudo docker push $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG"
                     
                 }
             }
@@ -95,7 +95,7 @@ pipeline {
         stage('Pull from ACR (Optional)') {
             steps {
                 script {
-                    sh "docker pull $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG"
+                    sh "sudo docker pull $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG"
                 }
             }
         }
