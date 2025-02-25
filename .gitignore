@@ -7,6 +7,5 @@ models/*.pkl
 models/*.model
 logs/
 models/
-data/processed/
 /.terraform/
 .qodo/
