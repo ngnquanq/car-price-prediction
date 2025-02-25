@@ -107,24 +107,65 @@ pipeline {
         }
 
 
+        // stage('Deploy to AKS via Helm') {
+        //     steps {
+        //         script {
+        //             // Fetch AKS credentials (updates kubeconfig)"
+        //             sh "az aks get-credentials --resource-group carprice-aks-rg --name carprice-aks --overwrite-existing"
+        //             echo(message: 'Get kubectl from Azure')
+        //             // Deploy with Helm. The image.pullPolicy is set to 'Always' to ensure the latest image is pulled.
+        //             sh """
+        //             helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_PATH --namespace model-serving -f $HELM_CHART_PATH/values.yaml 
+        //             """
+        //             echo(message: 'Deployed to AKS successfully! Now deploy the Ingress Controller')
+        //             sh """
+        //             helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --set controller.admissionWebhooks.enabled=false
+        //             """
+
+        //         }
+        //     }
+        // }
+
         stage('Deploy to AKS via Helm') {
             steps {
                 script {
-                    // Fetch AKS credentials (updates kubeconfig)"
+                    // Update kubeconfig to point to your cluster
                     sh "az aks get-credentials --resource-group carprice-aks-rg --name carprice-aks --overwrite-existing"
-                    echo(message: 'Get kubectl from Azure')
-                    // Deploy with Helm. The image.pullPolicy is set to 'Always' to ensure the latest image is pulled.
-                    sh """
-                    helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_PATH --namespace model-serving -f $HELM_CHART_PATH/values.yaml 
-                    """
-                    echo(message: 'Deployed to AKS successfully! Now deploy the Ingress Controller')
-                    sh """
-                    helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --set controller.admissionWebhooks.enabled=false
-                    """
+                    echo 'Kubeconfig updated.'
+
+                    // Check application status in namespace "model-serving" (adjust if needed)
+                    def appStatus = sh(script: "kubectl get pods -n model-serving | grep 'application' | grep -w Running", returnStatus: true)
+                    // Check ingress controller status in namespace "ingress-nginx"
+                    def ingressStatus = sh(script: "kubectl get pods -n ingress-nginx | grep 'ingress-nginx-controller' | grep -w Running", returnStatus: true)
                     
+                    echo "Application check exit code: ${appStatus}"
+                    echo "Ingress check exit code: ${ingressStatus}"
+
+                    // If both exit codes are 0, the grep command found a matching line, which indicates at least one pod is running.
+                    if (appStatus == 0 && ingressStatus == 0) {
+                        echo "Both application and ingress controller are running. Skipping Helm deployment."
+                    } else {
+                        echo "Either application or ingress controller is not fully running. Proceeding with Helm deployment."
+                        
+                        // Deploy or upgrade the application
+                        sh """
+                        helm upgrade --install ${HELM_RELEASE_NAME} ${HELM_CHART_PATH} \
+                        --namespace model-serving -f ${HELM_CHART_PATH}/values.yaml
+                        """
+                        echo "Application deployed successfully."
+
+                        // Deploy or upgrade the ingress controller
+                        sh """
+                        helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
+                        --namespace ingress-nginx --set controller.admissionWebhooks.enabled=false
+                        """
+                        echo "Ingress controller deployed successfully."
+                    }
                 }
             }
         }
+
+
     }
 
     post {
