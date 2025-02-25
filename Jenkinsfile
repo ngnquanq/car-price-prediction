@@ -3,7 +3,7 @@ pipeline {
 
     // Configure environment variables
     environment {
-        DOCKER_REGISTRY    = "carprediction.azurecr.io"         // e.g. "mycompany.azurecr.io" 
+        DOCKER_REGISTRY    = "carpredictionregistry.azurecr.io"         // e.g. "mycompany.azurecr.io" 
         IMAGE_NAME         = "car-price-prediction"
         IMAGE_TAG          = "latest"                           // or a dynamic tag like "${env.BUILD_NUMBER}"
         
@@ -66,7 +66,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'azure-acr', 
                                                 usernameVariable: 'ACR_USERNAME', 
                                                 passwordVariable: 'ACR_PASSWORD')]) {
-                    sh "docker login ${DOCKER_REGISTRY} -u ${ACR_USERNAME} -p ${ACR_PASSWORD}"
+                    //sh "docker login ${DOCKER_REGISTRY} -u ${ACR_USERNAME} -p ${ACR_PASSWORD}"
+                    sh "az acr login --name carpredictionregistry --resource-group carPricePrediction"
                 }
             }
         }
@@ -85,7 +86,6 @@ pipeline {
                 script {
                     // Login to ACR using the registry name extracted from the full registry URL.
                     
-                    sh "az acr login --name ${DOCKER_REGISTRY.split('\\.')[0]}"
                     sh "docker push $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG"
                     
                 }
