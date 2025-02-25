@@ -104,8 +104,8 @@ pipeline {
             steps {
                 script {
                     // Fetch AKS credentials (updates kubeconfig)
-                    sh "az aks get-credentials -g $AKS_RESOURCE_GROUP -n $AKS_CLUSTER_NAME --overwrite-existing"
-                    
+                    sh "az aks get-credentials --resource-group carprice-aks-rg --name carprice-aks --overwrite-existing"
+                    echo(message: 'Get kubectl from Azure')
                     // Deploy with Helm. The image.pullPolicy is set to 'Always' to ensure the latest image is pulled.
                     sh """
                     helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_PATH \
