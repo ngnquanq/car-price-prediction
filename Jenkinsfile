@@ -129,43 +129,65 @@ pipeline {
         stage('Deploy to AKS via Helm') {
             steps {
                 script {
-                    // Update kubeconfig to point to your cluster
+                    // Update kubeconfig to point to your AKS cluster
                     sh "az aks get-credentials --resource-group carprice-aks-rg --name carprice-aks --overwrite-existing"
                     echo 'Kubeconfig updated.'
 
-                    // Check application status in namespace "model-serving" (adjust if needed)
+                    // Check application status in namespace "model-serving"
                     def appStatus = sh(script: "kubectl get pods -n model-serving | grep 'application' | grep -w Running", returnStatus: true)
-                    // Check ingress controller status in namespace "ingress-nginx"
-                    def ingressStatus = sh(script: "kubectl get pods -n ingress-nginx | grep 'ingress-nginx-controller' | grep -w Running", returnStatus: true)
-                    
                     echo "Application check exit code: ${appStatus}"
-                    echo "Ingress check exit code: ${ingressStatus}"
 
-                    // If both exit codes are 0, the grep command found a matching line, which indicates at least one pod is running.
-                    if (appStatus == 0 && ingressStatus == 0) {
-                        echo "Both application and ingress controller are running. Skipping Helm deployment."
-                    } else {
-                        echo "Either application or ingress controller is not fully running. Proceeding with Helm deployment."
-                        
-                        // Deploy or upgrade the application
+                    // If application is not running, deploy or upgrade the application via Helm
+                    if (appStatus != 0) {
+                        echo "Application is not fully running. Deploying application via Helm..."
                         sh """
                         helm upgrade --install ${HELM_RELEASE_NAME} ${HELM_CHART_PATH} \
-                        --namespace model-serving -f ${HELM_CHART_PATH}/values.yaml
+                            --namespace model-serving -f ${HELM_CHART_PATH}/values.yaml
                         """
                         echo "Application deployed successfully."
+                    } else {
+                        echo "Application is already running."
+                    }
 
-                        // Deploy or upgrade the ingress controller
+                    // Check for an external IP on the ingress-nginx-controller service in namespace "ingress-nginx"
+                    def ingressIP = sh(
+                        script: "kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || echo ''",
+                        returnStdout: true
+                    ).trim()
+                    echo "Ingress external IP: ${ingressIP}"
+
+                    if (ingressIP) {
+                        echo "Ingress is already installed with external IP: ${ingressIP}. Testing connectivity..."
+                        sh "curl -v http://${ingressIP}"
+                    } else {
+                        echo "Ingress external IP not assigned or ingress not installed. Deploying ingress-nginx via Helm..."
                         sh """
                         helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
-                        --namespace ingress-nginx --set controller.admissionWebhooks.enabled=false
+                            --namespace ingress-nginx --set controller.admissionWebhooks.enabled=false
                         """
                         echo "Ingress controller deployed successfully."
+
+                        echo "Waiting for external IP assignment..."
+                        timeout(time: 5, unit: 'MINUTES') {
+                            waitUntil {
+                                def ip = sh(
+                                    script: "kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || echo ''",
+                                    returnStdout: true
+                                ).trim()
+                                echo "Polling ingress external IP: ${ip}"
+                                return ip != ""
+                            }
+                        }
+                        ingressIP = sh(
+                            script: "kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || echo ''",
+                            returnStdout: true
+                        ).trim()
+                        echo "Ingress external IP after installation: ${ingressIP}"
+                        sh "curl -v http://${ingressIP}"
                     }
                 }
             }
         }
-
-
     }
 
     post {
