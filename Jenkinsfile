@@ -38,7 +38,7 @@ pipeline {
 
         stage('Run Pytest') {
             steps {
-                sh "bash -c 'source ./venv/bin/activate && pytest --maxfail=1 --disable-warnings -q'"
+                sh "bash -c 'source ./venv/bin/activate && python create_model.py && pytest --maxfail=1 --disable-warnings -q'"
             }
         }
 
