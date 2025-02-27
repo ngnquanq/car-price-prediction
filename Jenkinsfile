@@ -146,12 +146,16 @@ pipeline {
                         """
                         echo "Application deployed successfully."
                     } else {
-                        echo "Application is already running."
+                        echo "Application is already running. But we can still update :) "
+                        sh """
+                        helm upgrade --install ${HELM_RELEASE_NAME} ${HELM_CHART_PATH} \
+                            --namespace model-serving -f ${HELM_CHART_PATH}/values.yaml
+                        """
                     }
 
                     // Check for an external IP on the ingress-nginx-controller service in namespace "ingress-nginx"
                     def ingressIP = sh(
-                        script: "kubectl get svc ingress-nginx-controller -n model-serving -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || echo ''",
+                        script: "kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || echo ''",
                         returnStdout: true
                     ).trim()
                     echo "Ingress external IP: ${ingressIP}"
