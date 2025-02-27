@@ -1,9 +1,8 @@
 # For logging purposes
 import os 
-os.makedirs("/var/log/myapp", exist_ok=True)
-
 from loguru import logger
-logger.add("/var/log/myapp/app.log", rotation="10 MB", retention="10 days", level="INFO")
+os.makedirs("/app/logs", exist_ok=True)
+logger.add("/app/logs/app.log", rotation="10 MB", retention="10 days", level="INFO")
 
 from json import encoder
 from urllib import response
@@ -18,7 +17,6 @@ from api.pydantic_models import CarPriceData
 import numpy as np
 from loguru import logger
 import sys 
-import os 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from api import constants, preprocess
 
