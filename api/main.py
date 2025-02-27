@@ -2,7 +2,7 @@
 import os
 from loguru import logger
 # Configure Loguru to log to /var/log/myapp/app.log
-logger.add("../log/app.log", rotation="10 MB", retention="10 days", level="INFO")
+logger.add("/var/log/myapp", rotation="10 MB", retention="10 days", level="INFO")
 
 from json import encoder
 from urllib import response
