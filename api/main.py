@@ -1,11 +1,8 @@
 # For logging purposes
 import os
 from loguru import logger
-
-os.makedirs("/var/log/myapp", exist_ok=True)
-
 # Configure Loguru to log to /var/log/myapp/app.log
-logger.add("/var/log/myapp/app.log", rotation="10 MB", retention="10 days", level="INFO")
+logger.add("../log/app.log", rotation="10 MB", retention="10 days", level="INFO")
 
 from json import encoder
 from urllib import response
