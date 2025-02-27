@@ -1,0 +1,9 @@
+{{- if .Values.filebeat.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-filebeat-config
+data:
+  filebeat.yml: |-
+{{ .Values.filebeat.config | nindent 4 }}
+{{- end }}

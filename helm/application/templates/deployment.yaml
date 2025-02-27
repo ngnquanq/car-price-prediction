@@ -23,10 +23,20 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
-      {{- with .Values.imagePullSecrets }}
+      initContainers:
+        - name: init-volume-permissions
+          image: busybox
+          command: ["sh", "-c", "mkdir -p /var/log/myapp && chmod -R 777 /var/log/myapp"]
+          volumeMounts:
+            - name: logs
+              mountPath: /var/log/myapp
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        {{- if .Values.imagePullSecrets }}
+        {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+        {{- else }}
+        - name: acr-secret
+        - name: dockerhub-secret
+        {{- end }}
       serviceAccountName: {{ include "application.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
       securityContext:
@@ -60,10 +70,28 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- with .Values.volumes }}
+        {{- if .Values.filebeat.enabled }}
+        - name: filebeat
+          image: "{{ .Values.filebeat.image }}"
+          args: ["-e", "-c", "/usr/share/filebeat/filebeat.yml"]
+          volumeMounts:
+            - name: logs
+              mountPath: /var/log/myapp
+            - name: filebeat-config
+              mountPath: /usr/share/filebeat/filebeat.yml
+              subPath: filebeat.yml
+        {{- end }}
       volumes:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        {{- if .Values.volumes }}
+        {{- toYaml .Values.volumes | nindent 8 }}
+        {{- end }}
+        {{- if .Values.filebeat.enabled }}
+        - name: logs
+          emptyDir: {}  # Shared temporary volume
+        - name: filebeat-config
+          configMap:
+            name: {{ include "application.fullname" . }}-filebeat-config
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

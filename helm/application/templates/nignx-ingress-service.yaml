@@ -1,0 +1,17 @@
+{{- if .Values.controller.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "application.fullname" . }}-nginx-ingress
+  annotations:
+    {{- toYaml .Values.controller.service.annotations | nindent 4 }}
+spec:
+  type: {{ .Values.controller.service.type }}
+  loadBalancerIP: {{ .Values.controller.service.loadBalancerIP | quote }}
+  ports:
+    - name: http
+      port: {{ .Values.controller.service.port }}
+      targetPort: {{ .Values.controller.service.targetPort }}
+  selector:
+    app: {{ include "application.fullname" . }}-nginx-ingress
+{{- end }}

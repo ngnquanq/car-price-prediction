@@ -9,7 +9,8 @@ image:
 
 # Add an imagePullSecrets section for pulling from the private registry
 imagePullSecrets:
-  - name: acr-secret
+  - name: acr-secret-latest
+  - name: dockerhub-secret-latest
 
 service:
   type: ClusterIP
@@ -54,3 +55,25 @@ affinity: {}
 controller:
   admissionWebhooks:
     enabled: false
+  # service:
+  #   type: LoadBalancer
+  #   loadBalancerIP: 13.76.190.108 
+  #   annotations:
+  #     service.beta.kubernetes.io/azure-load-balancer-resource-group: carprice-aks-rg
+  #   port: 80
+  #   targetPort: 80
+
+# Filebeat configuration section
+filebeat:
+  enabled: true
+  image: "docker.elastic.co/beats/filebeat:8.2.0"  
+  logstashHost: "logstash-service"   # Service name for Logstash
+  logstashPort: 5044
+  config: |
+    filebeat.inputs:
+      - type: log
+        enabled: true
+        paths:
+          - /var/log/myapp/*.log
+    output.logstash:
+      hosts: ["{{ .Values.filebeat.logstashHost }}:{{ .Values.filebeat.logstashPort }}"]

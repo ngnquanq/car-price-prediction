@@ -1,8 +1,9 @@
 # For logging purposes
 import os 
 from loguru import logger
-os.makedirs("/app/logs", exist_ok=True)
-logger.add("/app/logs/app.log", rotation="10 MB", retention="10 days", level="INFO")
+
+# No need to call os.makedirs here since the initContainer already creates and configures /var/log/myapp
+logger.add("/var/log/myapp/app.log", rotation="10 MB", retention="10 days", level="INFO")
 
 from json import encoder
 from urllib import response
