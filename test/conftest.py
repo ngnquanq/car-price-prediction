@@ -10,7 +10,7 @@ from api.preprocess import convert_data_dmatrix, drop_unncessary_columns, cast_t
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from api.main import MODEL_PATH
+#from api.main import MODEL_PATH
 
 # @pytest.fixture()
 # def create_model_xgboost():
@@ -25,6 +25,7 @@ from api.main import MODEL_PATH
 #     model.load_model(f"{MODEL_PATH}/catboost_model_autoencode.cbm")
 #     return model
 
+MODEL_PATH="models"
 @pytest.fixture()
 def create_model_lgbm():
     model = lgb.Booster(model_file=f"{MODEL_PATH}/lgbm_model.joblib")
