@@ -5,7 +5,7 @@ replicaCount: 1
 image:
   repository: carpredictionregistry.azurecr.io/car-price-prediction  # Your private ACR and image name
   pullPolicy: Always
-  tag: "latest"
+  tag: v2
 
 # Add an imagePullSecrets section for pulling from the private registry
 imagePullSecrets:

@@ -5,7 +5,7 @@ pipeline {
     environment {
         DOCKER_REGISTRY    = "carpredictionregistry.azurecr.io"         // e.g. "mycompany.azurecr.io" 
         IMAGE_NAME         = "car-price-prediction"
-        IMAGE_TAG          = "latest"                           // or a dynamic tag like "${env.BUILD_NUMBER}"
+        IMAGE_TAG          = "v2"                           // or a dynamic tag like "${env.BUILD_NUMBER}"
         
         AZURE_CRED_ID      = "azure-sp-credentials"             // Jenkins credentials for Azure (Service Principal)
         HELM_RELEASE_NAME  = "application"
@@ -194,10 +194,11 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Clean up local Docker image to free up space
-            sh "sudo docker rmi $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG || true"
-        }
-    }
+    // No need to tho
+    // post {
+    //     always {
+    //         // Clean up local Docker image to free up space
+    //         sh "sudo docker rmi $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG || true"
+    //     }
+    // }
 }
