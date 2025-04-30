@@ -17,8 +17,8 @@ from fastapi.staticfiles import StaticFiles
 from regex import R
 from api.pydantic_models import CarPriceData
 import numpy as np
+import logging, sys, json, time
 from loguru import logger
-import sys 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from api import constants, preprocess
 
@@ -26,7 +26,7 @@ from api import constants, preprocess
 logger.info("Starting the ML application ...")
 
 # Setup some constants
-MODEL_PATH="models"
+MODEL_PATH = "models"
 
 # Initialize the FastAPI app
 app = FastAPI()
@@ -39,6 +39,23 @@ app.mount("/static", StaticFiles(directory="api/static"), name="static")
 
 # Model LGBM
 model_lgbm = lgb.Booster(model_file=f"{MODEL_PATH}/lgbm_model.joblib")
+
+class JsonFormatter(logging.Formatter):
+    def format(self, record: logging.LogRecord) -> str:
+        log = {
+            "ts": time.strftime('%Y-%m-%dT%H:%M:%S', time.gmtime(record.created)),
+            "level": record.levelname,
+            "msg": record.getMessage(),
+            "module": record.module,
+            "line": record.lineno,
+        }
+        return json.dumps(log)
+
+handler = logging.FileHandler("/var/log/myapp/app.log")
+handler.setFormatter(JsonFormatter())
+root = logging.getLogger()
+root.setLevel(logging.INFO)
+root.addHandler(handler)
 
 @app.get("/")
 def read_root(request: Request):

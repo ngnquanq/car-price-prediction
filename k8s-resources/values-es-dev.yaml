@@ -1,0 +1,11 @@
+# values-es-dev.yaml
+replicas: 1
+esJavaOpts: "-Xms1g -Xmx1g"
+extraEnvs:
+  - name: discovery.type
+    value: single-node      # dev-only
+volumeClaimTemplate.enabled: false
+clusterHealthCheckParams: "wait_for_status=yellow&timeout=5s"
+startupProbe:
+  failureThreshold: 30   # 30 × 10 s = 5 min grace
+  periodSeconds: 10
