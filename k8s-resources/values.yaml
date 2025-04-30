@@ -2,11 +2,11 @@ replicaCount: 1
 
 image:
   # The api repository
-  repository: ngnquanq/car-price-prediction-api
+  repository: ngnquanq/car-price-prediction
   # This sets the pull policy for images.
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: latest
 
 # This is to override the chart name.
 nameOverride: ""
@@ -43,11 +43,15 @@ securityContext: {}
   # runAsUser: 1000
 
 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
+containerPort: 8000         # add if not present
 service:
-  # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
-  type: ClusterIP
-  # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 80
+  port: 8000   
+  targetPort: 8000            # and nodePort if you’re using it
+livenessProbe:
+  httpGet: { path: /, port: 8000 }
+readinessProbe:
+  httpGet: { path: /, port: 8000 }
+
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
@@ -57,7 +61,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: localhost
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -75,14 +79,14 @@ resources:
     memory: 512Mi
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
+# livenessProbe:
+#   httpGet:
+#     path: /
+#     port: http
+# readinessProbe:
+#   httpGet:
+#     path: /
+#     port: http
 
 autoscaling:
   enabled: true
@@ -104,7 +108,8 @@ volumeMounts: []
 #   mountPath: "/etc/foo"
 #   readOnly: true
 
-nodeSelector: {}
+nodeSelector: 
+  app: car-price-prediction
 
 tolerations: []
 

@@ -29,8 +29,8 @@ RUN python -m pip install --no-cache-dir -r requirements-inference.txt
 # but setting it up here ensures the image is prepared for local testing.
 RUN mkdir -p /var/log/myapp && chmod -R 777 /var/log/myapp
 
-# Expose port 80
-EXPOSE 80
+# Expose port 8080
+EXPOSE 8080
 
 # Run the application with Uvicorn
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8080"]
